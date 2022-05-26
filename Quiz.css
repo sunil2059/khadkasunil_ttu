@@ -120,7 +120,7 @@
 
   .u-section-1 .u-group-1 {
     width: 433px;
-    min-height: 409px;
+    min-height: 438px;
     margin: 7px auto 7px -33px;
   }
 
@@ -137,17 +137,17 @@
   }
 
   .u-section-1 .u-group-2 {
-    width: 312px;
-    min-height: 54px;
-    margin-top: 86px;
-    margin-right: 42px;
-    margin-left: auto;
+    width: 295px;
+    min-height: 44px;
+    margin-top: 109px;
+    margin-right: auto;
+    margin-left: 47px;
   }
 
   .u-section-1 .u-text-2 {
     font-size: 1.5rem;
     width: auto;
-    margin-top: 7px;
+    margin-top: 0;
     margin-left: 23px;
     margin-right: 23px;
   }

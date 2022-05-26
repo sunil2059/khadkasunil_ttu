@@ -82,7 +82,7 @@
   font-weight: 700;
   text-transform: uppercase;
   font-size: 1rem;
-  margin: 8px auto 0 101px;
+  margin: -11px auto 0 94px;
 }
 
 .u-section-2 .u-image-1 {
@@ -124,7 +124,7 @@
 
 .u-section-2 .u-text-3 {
   font-size: 1.5rem;
-  margin: 13px 0 0;
+  margin: 6px 0 0;
 }
 
 .u-section-2 .u-btn-2 {
@@ -132,7 +132,7 @@
   border-style: solid;
   font-weight: 700;
   text-transform: uppercase;
-  margin: 11px auto 0 263px;
+  margin: 17px auto 0 263px;
 }
 
 .u-section-2 .u-shape-3 {
@@ -278,7 +278,7 @@
   }
 
   .u-section-2 .u-btn-2 {
-    margin-top: 11px;
+    margin-top: 17px;
     margin-left: 158px;
   }
 }
@@ -685,7 +685,7 @@
 
   .u-section-3 .u-image-2 {
     height: 223px;
-    margin-top: 697px;
+    margin-top: 1655px;
     margin-right: initial;
     margin-left: initial;
     width: auto;
@@ -693,7 +693,7 @@
 
   .u-section-3 .u-image-3 {
     height: 248px;
-    margin-top: -920px;
+    margin-top: -1646px;
     margin-right: initial;
     margin-left: initial;
     width: auto;
@@ -701,7 +701,7 @@
 
   .u-section-3 .u-image-4 {
     height: 242px;
-    margin-top: 1386px;
+    margin-top: 0;
     margin-right: initial;
     margin-left: initial;
     width: auto;
@@ -709,13 +709,13 @@
 
   .u-section-3 .u-layout-wrap-1 {
     width: 340px;
-    margin-top: -2115px;
+    margin-top: -489px;
     margin-right: auto;
-    margin-left: 106px;
+    margin-left: 0;
   }
 
   .u-section-3 .u-layout-cell-1 {
-    min-height: 322px;
+    min-height: 196px;
   }
 
   .u-section-3 .u-text-1 {
@@ -725,16 +725,16 @@
   }
 
   .u-section-3 .u-layout-cell-2 {
-    min-height: 664px;
+    min-height: 634px;
   }
 
   .u-section-3 .u-text-2 {
-    margin: 359px 1px 0;
+    margin: 329px 1px 0;
   }
 
   .u-section-3 .u-image-5 {
-    height: 211px;
-    margin-top: 225px;
+    height: 240px;
+    margin-top: 270px;
     margin-right: initial;
     margin-left: initial;
     width: auto;
@@ -742,6 +742,7 @@
 
   .u-section-3 .u-image-6 {
     height: 232px;
+    margin-top: -1648px;
     margin-right: initial;
     margin-left: initial;
     width: auto;
@@ -749,7 +750,7 @@
 
   .u-section-3 .u-image-7 {
     height: 270px;
-    margin-top: 0;
+    margin-top: 906px;
     margin-bottom: 60px;
     margin-right: initial;
     margin-left: initial;
