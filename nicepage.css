@@ -36275,7 +36275,7 @@ a.u-link.u-text-hover-grey-90:hover {
         --theme-sheet-width-lg: 940px;
         --theme-sheet-width-md: 720px;
         --theme-sheet-width-sm: 540px;
-        --theme-sheet-width-xs: 340px;
+        --theme-sheet-width-xs: 492px;
         
         
         
@@ -36558,6 +36558,11 @@ a.u-link.u-text-hover-grey-90:hover {
 
 
 /*end-variables sitestylecss*/
+ .u-header {
+  background-image: url("images/trek-4054510.jpg");
+  background-position: 50% 50%;
+}
+
 .u-header .u-sheet-1 {
   min-height: 194px;
 }
@@ -36574,7 +36579,7 @@ a.u-link.u-text-hover-grey-90:hover {
 }
 
 .u-header .u-menu-1 {
-  margin: -109px auto 0 236px;
+  margin: -101px auto 0;
 }
 
 .u-header .u-file-icon-1 {
@@ -36588,7 +36593,7 @@ a.u-link.u-text-hover-grey-90:hover {
   letter-spacing: 0px;
   background-image: none;
   text-transform: uppercase;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .u-header .u-sidenav-1 {
@@ -36612,7 +36617,7 @@ a.u-link.u-text-hover-grey-90:hover {
   min-height: 16px;
   width: 150px;
   min-width: 68px;
-  margin: -52px 0 0 auto;
+  margin: -60px 0 0 auto;
 }
 
 .u-header .u-icon-1 {
@@ -36649,12 +36654,7 @@ a.u-link.u-text-hover-grey-90:hover {
   }
 
   .u-header .u-menu-1 {
-    margin-top: -109px;
-    margin-left: 236px;
-  }
-
-  .u-header .u-nav-1 {
-    font-weight: 400;
+    margin-top: -101px;
   }
 
   .u-header .u-nav-2 {
@@ -36673,11 +36673,10 @@ a.u-link.u-text-hover-grey-90:hover {
 @media (max-width: 991px) {
   .u-header .u-menu-1 {
     margin-top: -97px;
-    margin-left: auto;
   }
 
   .u-header .u-social-icons-1 {
-    margin-top: -52px;
+    margin-top: -60px;
   }
 
   .u-header .u-line-1 {
@@ -36710,8 +36709,8 @@ a.u-link.u-text-hover-grey-90:hover {
   }
 
   .u-header .u-menu-1 {
-    margin-top: -76px;
-    margin-right: 59px;
+    margin-top: -95px;
+    margin-right: auto;
   }
 
   .u-header .u-file-icon-1 {
@@ -36733,12 +36732,11 @@ a.u-link.u-text-hover-grey-90:hover {
   }
 
   .u-header .u-social-icons-1 {
-    margin-top: -117px;
-    margin-right: 20px;
+    margin-top: -47px;
   }
 
   .u-header .u-line-1 {
-    margin-top: 101px;
+    margin-top: 50px;
     margin-bottom: 39px;
   }
 }
@@ -36975,41 +36973,48 @@ a.u-link.u-text-hover-grey-90:hover {
 }
 @media (max-width: 575px) {
   .u-footer .u-sheet-1 {
-    min-height: 262px;
+    min-height: 264px;
   }
 
   .u-footer .u-text-1 {
     font-size: 1.125rem;
     margin-top: 7px;
-    margin-right: 150px;
-    margin-left: -32px;
+    margin-right: 168px;
+    margin-left: -50px;
   }
 
   .u-footer .u-text-2 {
     font-size: 1.125rem;
     margin-top: -29px;
-    margin-right: -17px;
-    margin-left: 167px;
+    margin-right: -33px;
+    margin-left: 183px;
   }
 
   .u-footer .u-image-1 {
-    margin-top: 0;
-    margin-right: 0;
+    margin-top: 3px;
+    margin-right: 86px;
   }
 
   .u-footer .u-image-2 {
-    margin-top: -114px;
-    margin-left: 25px;
+    height: 113px;
+    margin-top: -115px;
+    margin-left: 80px;
   }
 
   .u-footer .u-social-icons-1 {
     width: 111px;
-    margin-top: 8px;
+    margin-top: 10px;
+    margin-left: 80px;
+  }
+
+  .u-footer .u-social-icons-2 {
+    margin-top: -25px;
+    margin-right: 86px;
   }
 
   .u-footer .u-text-3 {
     width: auto;
-    margin: 7px -11px 17px 11px;
+    margin: 0 0 18px;
   }
 }
 
