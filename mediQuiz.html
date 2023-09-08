@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>https://khadkasunil.com.np</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <img src="logo.png" width="120px">
+    <!--Info Box-->
+    <div class="info_box">
+        <div class="info_title"><span>Rules of the Test</span></div>
+        <div class="info_list">
+            <ul>
+            <li> You will be provided 10 questions to answer.</li>
+            <li> Select one correct answer out of 4 options.</li>
+            <li> You will get <span> 60 seconds</span> time to answer each question.</li>
+            <li> You will be awarded a point for each correct answer.</li>
+            <li> Click Next button after completion of each attempt.</li>
+            <li> Let's start!</li>
+            </ul>
+        </div>
+        <div class="buttons">
+            <button class="restart"> Start</button>
+        </div>
+    </div>
+    <!--quiz box-->
+    <div class="quiz_box">
+        <header>
+            <div class="title">Topic:MediQuiz</div>
+            <div class="timer">
+                <div class="time_left_txt">Time Left</div>
+                <div class="timer_sec">60</div>
+            </div>
+            <div class="time_line"></div>
+        </header>
+
+        <section>
+            <div class="que_text"></div>
+            <div class="option_list"></div>
+        </section>
+
+        <footer>
+            <div class="total_que"></div>
+            <button class="next_btn">Next</button>
+        </footer>
+    </div>
+
+    <!--result box-->
+    <div class="result_box">
+        <div class="complete_text">The Test has been completed!</div>
+        <div class="score_text"></div>
+        <div class="buttons">
+            <button class="restart">Try Again!</button>
+            <button class="quit">Exit</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="questions.js"></script>
+</body>
+</html>
