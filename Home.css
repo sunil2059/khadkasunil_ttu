@@ -2,10 +2,6 @@
   background-image: url("images/weee.jpg");
   background-position: 0% 50%;
 }
-@media (max-width:600px){
-  *{overflow-x: hidden;
-  }
-}
 
 .u-section-1 .u-sheet-1 {
   min-height: 1233px;
