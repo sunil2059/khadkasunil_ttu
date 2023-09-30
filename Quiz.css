@@ -3,6 +3,9 @@
   background-position: 50% 50%;
 }
 
+*{
+ overflow-x: hidden;
+}
 .u-section-1 .u-sheet-1 {
   min-height: 234px;
 }
