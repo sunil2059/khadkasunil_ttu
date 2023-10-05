@@ -1,11 +1,14 @@
- .u-section-1 {
+*{
+ overflow-x: hidden;
+ overflow-y: scroll;
+}
+
+.u-section-1 {
   background-image: linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url("images/butterfly-3309504.jpg");
   background-position: 50% 50%;
 }
 
-*{
- overflow-x: hidden;
-}
+
 .u-section-1 .u-sheet-1 {
   min-height: 234px;
 }
