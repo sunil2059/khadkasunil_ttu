@@ -133,7 +133,7 @@
     background: #ffffff;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /*/justify-content: space-between;/*/
     box-shadow: 0rem 0.1875rem 0.3125rem 0.0625rem rgba(0, 0, 0, 0.1);
   }
 
@@ -143,9 +143,6 @@
     border: 0.0625rem solid #6928da;
     height: 2.8125rem;
     padding: 0.5rem 0.5rem;
-
-    
-
     border-radius: 0.625rem;
     display: flex;
     align-items: center;
@@ -401,7 +398,7 @@
   }
 
 
-/*/@media(max-width:998px){
+@media(max-width:998px){
   html {
     font-size: 65%
   }
@@ -412,4 +409,3 @@
     font-size: 55%
   }
 }
-/*/
