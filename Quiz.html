@@ -1,63 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<title>MCQs</title>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>https://khadkasunil.com.np</title>
-    <link rel="stylesheet" href="style.css">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('bg.jpg');
+  background-size:auto;
+}
+
+#header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+h2 {
+  font-family:Georgia;
+  color:#000555;
+  margin: 5px;
+  text-align: center;
+}
+
+#quiz {
+  color:#000;
+  font-family:Patrick Hand;
+  font-size:16px;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: linear-gradient(to top left, #66ccff 0%, #ff99ff 100%);
+  border-radius: 25px;
+}
+
+input[type="submit"] {
+  display: block;
+  font-family:verdana;
+  width: 100%;
+  padding: 10px;
+  margin: 5px;
+  background: linear-gradient(to top left, #9999ff 0%, #6600cc 100%);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+#results {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: linear-gradient(to top left, #00cc99 0%, #66ff66 100%);
+  border-radius: 25px;
+  font-family:Tahoma;
+}
+
+#timer {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 20px;
+}
+</style>
 </head>
+
 <body>
-    <img src="logo.png" width="120px">
-    <!--Info Box-->
-    <div class="info_box">
-        <div class="info_title"><span>Rules of the Test</span></div>
-        <div class="info_list">
-            <ul>
-            <li> You will be provided 10 questions to answer.</li>
-            <li> Select one correct answer out of 4 options.</li>
-            <li> You will get <span> 60 seconds</span> time to answer each question.</li>
-            <li> You will be awarded a point for each correct answer.</li>
-            <li> Click Next button after completion of each attempt.</li>
-            <li> Let's start!</li>
-            </ul>
-        </div>
-        <div class="buttons">
-            <button class="restart"> Start</button>
-        </div>
-    </div>
-    <!--quiz box-->
-    <div class="quiz_box">
-        <header>
-            <div class="title">Topic:MediQuiz</div>
-            <div class="timer">
-                <div class="time_left_txt">Time Left</div>
-                <div class="timer_sec">60</div>
-            </div>
-            <div class="time_line"></div>
-        </header>
 
-        <section>
-            <div class="que_text"></div>
-            <div class="option_list"></div>
-        </section>
+<h2>Multiple Choice Test</h2>
 
-        <footer>
-            <div class="total_que"></div>
-            <button class="next_btn">Next</button>
-        </footer>
-    </div>
+<div id="timer"></div>
 
-    <!--result box-->
-    <div class="result_box">
-        <div class="complete_text">The Test has been completed!</div>
-        <div class="score_text"></div>
-        <div class="buttons">
-            <button class="restart">Try Again!</button>
-            <button class="quit">Exit</button>
-        </div>
-    </div>
+<form id="quiz" onsubmit="return showResults();">
+      <p>Q1:The suprarenal medulla develop from:</p>
+  <input type="radio" name="Q1" value="surface ectoderm"> surface ectoderm<br>
+  <input type="radio" name="Q1" value="neuro ectoderm"> neuro ectoderm<br>
+  <input type="radio" name="Q1" value="mesoderm"> mesoderm<br>
+  <input type="radio" name="Q1" value="endoderm"> endoderm<br>
 
-    <script src="script.js"></script>
-    <script src="questions.js"></script>
+ 
+  <p>Q2:Which of the following hormone shows 2 distinct peaks in menstrual cycle?</p>
+  <input type="radio" name="Q2" value="Progesterone"> Progesterone<br>
+  <input type="radio" name="Q2" value="Estrogen"> Estrogen<br>
+  <input type="radio" name="Q2" value="LH"> LH<br>
+  <input type="radio" name="Q2" value="FSH"> FSH<br>
+
+ 
+  <p>Q3:The commonest tumor of the anterior pituitary is:</p>
+  <input type="radio" name="Q3" value="Somatotropic adenoma"> Somatotropic adenoma<br>
+  <input type="radio" name="Q3" value="gonadotropic adenoma"> gonadotropic adenoma<br>
+  <input type="radio" name="Q3" value="Prolactinoma"> Prolactinoma<br>
+  <input type="radio" name="Q3" value="Thyrotropic adenoma"> Thyrotropic adenoma<br>
+
+ 
+  <p>Q4:DOC in Trichomoniasis is :</p>
+  <input type="radio" name="Q4" value="Metronidazole"> Metronidazole<br>
+  <input type="radio" name="Q4" value="Doxycycline"> Doxycycline<br>
+  <input type="radio" name="Q4" value="PnG"> PnG<br>
+  <input type="radio" name="Q4" value="Chloroquine"> Chloroquine<br>
+
+ 
+  <p>Q5:Diabetic Neuropathy is commonly manifested as:</p>
+  <input type="radio" name="Q5" value="symmetric peripheral neuropathy"> symmetric peripheral neuropathy<br>
+  <input type="radio" name="Q5" value="autonomic neuropathy"> autonomic neuropathy<br>
+  <input type="radio" name="Q5" value="mononeuropathy"> mononeuropathy<br>
+  <input type="radio" name="Q5" value="Asymmetric peripheral neuropathy"> Asymmetric peripheral neuropathy<br>
+
+ 
+  <p>Q6:A 25 year old male had a fall and suffered a severe blow on the perineum. There was no external injury in the perineum but his bulbous urethra was found to be ruptured. In this case the extra-vasation of urine takes place into:</p>
+  <input type="radio" name="Q6" value="pelvic cavity around the prostate"> pelvic cavity around the prostate<br>
+  <input type="radio" name="Q6" value="ischiorectal fossa"> ischiorectal fossa<br>
+  <input type="radio" name="Q6" value="superficial perineal pouch"> superficial perineal pouch<br>
+  <input type="radio" name="Q6" value="deep perineal pouch"> deep perineal pouch<br>
+
+ 
+  <p>Q7:A diagnosis of prolapsed anterior vaginal wall was made during vaginal examination of a multiparous woman. Which of the following structures lies anterior to the upper half of vagina ?</p>
+  <input type="radio" name="Q7" value="Urethra"> Urethra<br>
+  <input type="radio" name="Q7" value="Rectum"> Rectum<br>
+  <input type="radio" name="Q7" value="Anal Canal"> Anal Canal<br>
+  <input type="radio" name="Q7" value="Urinary bladder"> Urinary bladder<br>
+
+ 
+  <p>Q8:A 60 year old patient has complained of difficulty in passing urine. On cystoscopic examination the uvula vesicae is found to be enlarged. Which lobe of the prostate lies underneath the uvula vesicae ?</p>
+  <input type="radio" name="Q8" value="Anterior"> Anterior<br>
+  <input type="radio" name="Q8" value="Posterior"> Posterior<br>
+  <input type="radio" name="Q8" value="Median"> Median<br>
+  <input type="radio" name="Q8" value="Lateral"> Lateral<br>
+
+ 
+  <p>Q9:A patient was receiving high dose of systemic corticosteroids for the last three months for intractable rheumatoid arthritis. What could be the effect of the treatment on her endogenous cortisol secretion ?</p>
+  <input type="radio" name="Q9" value="Increased"> Increased<br>
+  <input type="radio" name="Q9" value="Decreased"> Decreased<br>
+  <input type="radio" name="Q9" value="No change"> No change<br>
+  <input type="radio" name="Q9" value="Undefined"> Undefined<br>
+
+ 
+  <p>Q10:A 25 year old pregnant lady delivered a premature baby having dyspnoea & cyanosis. A diagnosis of respiratory distress syndrome was made. Which one of the following biochemical investigations would you like to perform in this case ?</p>
+  <input type="radio" name="Q10" value="Serum bilirubin"> Serum bilirubin<br>
+  <input type="radio" name="Q10" value="Creatinine"> Creatinine<br>
+  <input type="radio" name="Q10" value="Alpha-feto protein"> Alpha-feto protein<br>
+  <input type="radio" name="Q10" value="Lecithin/sphingomyelin"> Lecithin/sphingomyelin<br>
+
+ 
+  <p>Q11:A 55 year old lady complained of post-coital bleeding and foul smelling discharge for the last 6 months. She also complained of recent weight loss. The likely diagnosis in the above case is:</p>
+  <input type="radio" name="Q11" value="endometrial carcinoma"> endometrial carcinoma<br>
+  <input type="radio" name="Q11" value="Cervical erosions"> Cervical erosions<br>
+  <input type="radio" name="Q11" value="carcinoma of cervix"> carcinoma of cervix<br>
+  <input type="radio" name="Q11" value="Uterine Rupture"> Uterine Rupture<br>
+
+ 
+  <p>Q12:A young adult male patient attended STD clinic. On examination, a genital ulcer was observed. The exudate from the lesion was sent for gram's staining. Plenty of polymorpho nuclear leucocytes and pleomorphic gram negative bacilli were observed.</p>
+  <input type="radio" name="Q12" value="Haemophillus ducreyi"> Haemophillus ducreyi<br>
+  <input type="radio" name="Q12" value="T pallidum"> T pallidum<br>
+  <input type="radio" name="Q12" value="G vaginalis"> G vaginalis<br>
+  <input type="radio" name="Q12" value="N gonorrhoeae"> N gonorrhoeae<br>
+
+ 
+  <p>Q13:A 55 year old man presented with atrial fibrillation, exophthalmus, tremor, hyperreflexia and goitre. Which one of the following treatments will be the best option after blood sample for thyroid has been sent to the laboratory ?</p>
+  <input type="radio" name="Q13" value="Iodide"> Iodide<br>
+  <input type="radio" name="Q13" value="Propylthiouracil"> Propylthiouracil<br>
+  <input type="radio" name="Q13" value="Atenolol and propylthiouracil"> Atenolol and propylthiouracil<br>
+  <input type="radio" name="Q13" value="Iodide, atenolol and propylthiouracil"> Iodide, atenolol and propylthiouracil<br>
+
+ 
+  <p>Q14:All of the following statements are true regarding acute diarrhoea EXCEPT:</p>
+  <input type="radio" name="Q14" value="Weaning from 3rd month onwards can substantially reduce the incidence of acute diarrhoea in children"> Weaning from 3rd month onwards can substantially reduce the incidence of acute diarrhoea in children<br>
+  <input type="radio" name="Q14" value="Acute diarrhoea is caused by infection of the bowel"> Acute diarrhoea is caused by infection of the bowel<br>
+  <input type="radio" name="Q14" value="The incidence of acute diarrhoea is highest in children in the age group of 6-11 months"> The incidence of acute diarrhoea is highest in children in the age group of 6-11 months<br>
+  <input type="radio" name="Q14" value="Acute diarrhoea is diarrhoea of sudden onset lasting for 3 to 14 days (WHO)"> Acute diarrhoea is diarrhoea of sudden onset lasting for 3 to 14 days (WHO)<br>
+
+ 
+  <p>Q15:The commonest cause of Cushing's syndrome is:</p>
+  <input type="radio" name="Q15" value="ectopic production of ACTH"> ectopic production of ACTH<br>
+  <input type="radio" name="Q15" value="adrenal carcinoma"> adrenal carcinoma<br>
+  <input type="radio" name="Q15" value="pituitary hypersecretion of ACTH"> pituitary hypersecretion of ACTH<br>
+  <input type="radio" name="Q15" value="therapeutic administration of glucocorticoids"> therapeutic administration of glucocorticoids<br>
+
+ 
+
+
+
+
+ 
+
+
+  <input type="submit" value="Submit">
+</form>
+
+
+<div id="results"></div>
+
+<script>
+
+var timeLeft = 500;
+var timer = document.getElementById('timer');
+var timerId = setInterval(countdown, 1000);
+
+function countdown() {
+  if (timeLeft == 0) {
+    clearTimeout(timerId);
+    showResults();
+  } else {
+    timer.innerHTML = timeLeft + ' seconds remaining';
+    timeLeft--;
+  }
+}
+
+var correctAnswers = {
+Q1: 'neuro ectoderm', 
+Q2: 'Estrogen', 
+Q3: 'Prolactinoma', 
+Q4: 'Metronidazole', 
+Q5: 'symmetric peripheral neuropathy', 
+Q6: 'superficial perineal pouch', 
+Q7: 'Urinary bladder', 
+Q8: 'Median', 
+Q9: 'Decreased', 
+Q10: 'Lecithin/sphingomyelin', 
+Q11: 'carcinoma of cervix', 
+Q12: 'Haemophillus ducreyi', 
+Q13: 'Iodide, atenolol and propylthiouracil', 
+Q14: 'Weaning from 3rd month onwards can substantially reduce the incidence of acute diarrhoea in children', 
+Q15: 'therapeutic administration of glucocorticoids'
+
+
+
+};
+
+var answerText = {
+Q1: 'neuro ectoderm', 
+Q2: 'Estrogen', 
+Q3: 'Prolactinoma', 
+Q4: 'Metronidazole', 
+Q5: 'symmetric peripheral neuropathy', 
+Q6: 'superficial perineal pouch', 
+Q7: 'Urinary bladder', 
+Q8: 'Median', 
+Q9: 'Decreased', 
+Q10: 'Lecithin/sphingomyelin', 
+Q11: 'carcinoma of cervix', 
+Q12: 'Haemophillus ducreyi', 
+Q13: 'Iodide, atenolol and propylthiouracil', 
+Q14: 'Weaning from 3rd month onwards can substantially reduce the incidence of acute diarrhoea in children', 
+Q15: 'therapeutic administration of glucocorticoids'
+
+
+};
+
+function showResults() {
+  var quiz = document.getElementById('quiz');
+  var results = document.getElementById('results');
+  var correct = 0;
+  var answerList = '';
+
+  for (var question in correctAnswers) {
+    var radios = quiz[question];
+    for (var i = 0; i < radios.length; i++) {
+      var radio = radios[i];
+      if (radio.value == correctAnswers[question] && radio.checked) {
+        correct++;
+      }
+    }
+    answerList += 'Answer ' + question + ': ' + answerText[question] + '<br>';
+  }
+
+  results.innerHTML = 'You got ' + correct + ' out of ' + Object.keys(correctAnswers).length + ' questions correct.<br>' + answerList;
+  return false;
+}
+
+
+
+</script>
+
 </body>
 </html>
