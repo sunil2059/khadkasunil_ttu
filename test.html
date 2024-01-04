@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="test.css">
+</head>
+<body>
+
+<h3>Multiple Choice Questions</h3>
+
+<form id="quiz" onsubmit="return false;">
+    <p>1. The suprarenal medulla develop from: </p>
+  <input type="radio" id="surface ectoderm" name="q1" value="surface ectoderm">
+  <label for="surface ectoderm">surface ectoderm</label><br>
+  <input type="radio" id="neuro ectoderm" name="q1" value="neuro ectoderm">
+  <label for="neuro ectoderm">neuro ectoderm</label><br>
+  <input type="radio" id="mesoderm" name="q1" value="mesoderm">
+  <label for="mesoderm">mesoderm</label><br>
+   
+  <p>2. Which of the following hormone shows 2 distinct peaks in menstrual cycle? </p>
+  <input type="radio" id="Progesterone" name="q2" value="Progesterone">
+  <label for="Progesterone">Progesterone</label><br>
+  <input type="radio" id="Estrogen" name="q2" value="Estrogen">
+  <label for="Estrogen">Estrogen</label><br>
+  <input type="radio" id="LH" name="q2" value="LH">
+  <label for="LH">LH</label><br>
+   
+  <p>3. The commonest tumor of the anterior pituitary is: </p>
+  <input type="radio" id="Somatotropic adenoma" name="q3" value="Somatotropic adenoma">
+  <label for="Somatotropic adenoma">Somatotropic adenoma</label><br>
+  <input type="radio" id="gonadotropic adenoma" name="q3" value="gonadotropic adenoma">
+  <label for="gonadotropic adenoma">gonadotropic adenoma</label><br>
+  <input type="radio" id="Prolactinoma" name="q3" value="Prolactinoma">
+  <label for="Prolactinoma">Prolactinoma</label><br>
+   
+  <p>4. DOC in Trichomoniasis is : </p>
+  <input type="radio" id="Metronidazole" name="q4" value="Metronidazole">
+  <label for="Metronidazole">Metronidazole</label><br>
+  <input type="radio" id="Doxycycline" name="q4" value="Doxycycline">
+  <label for="Doxycycline">Doxycycline</label><br>
+  <input type="radio" id="PnG" name="q4" value="PnG">
+  <label for="PnG">PnG</label><br>
+   
+  <p>5. Diabetic Neuropathy is commonly manifested as: </p>
+  <input type="radio" id="symmetric peripheral neuropathy" name="q5" value="symmetric peripheral neuropathy">
+  <label for="symmetric peripheral neuropathy">symmetric peripheral neuropathy</label><br>
+  <input type="radio" id="autonomic neuropathy" name="q5" value="autonomic neuropathy">
+  <label for="autonomic neuropathy">autonomic neuropathy</label><br>
+  <input type="radio" id="mononeuropathy" name="q5" value="mononeuropathy">
+  <label for="mononeuropathy">mononeuropathy</label><br>
+   
+
+
+   
+
+
+  
+  <input type="submit" value="Submit" onclick="checkAnswers()">
+</form>
+
+<p id="message"></p>
+
+<script>
+function checkAnswers() {
+	let q1 = document.querySelector('input[name="q1"]:checked').value; 
+	let q2 = document.querySelector('input[name="q2"]:checked').value; 
+	let q3 = document.querySelector('input[name="q3"]:checked').value; 
+	let q4 = document.querySelector('input[name="q4"]:checked').value; 
+	let q5 = document.querySelector('input[name="q5"]:checked').value; 
+
+
+  
+  let score = 0;
+  if (q1 === 'neuro ectoderm') score++;
+  if (q2 === 'Estrogen') score++; 
+  if (q3 === 'Prolactinoma') score++;
+  if (q4 === 'Metronidazole') score++;
+  if (q5 === 'symmetric peripheral neuropathy') score++;
+  
+  document.getElementById('message').textContent = 'You got ' + score + ' out of 5 correct.';
+}
+</script>
+
+</body>
+</html>

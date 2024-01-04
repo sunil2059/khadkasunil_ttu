@@ -1,0 +1,134 @@
+<html>
+<head>
+  <title>Let's Begin.</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Lobster&family=Merriweather:wght@300&family=PT+Serif:ital@1&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Add some style to the page */
+    body {
+      font-family: 'Josefin Sans', sans-serif;
+      background-image: url('bg.jpg');
+      background-size:cover;
+    }
+
+    .container {
+      width: 400px;
+      margin:auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border: 1px solid #bbb;
+      border-radius: 10%;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Lobster', sans-serif;
+      color: #333;
+    }
+
+    label {
+      font-family: 'Josefin Sans', sans-serif;
+      display: block;
+      font-size:18px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input {
+      display: block;
+      background-color: rgba(255, 255, 255, 0.8);
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    button {
+      font-family: 'Ubuntu', sans-serif;
+      display: block;
+      font-size:20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #118dff;
+      opacity:0.95;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      margin-bottom: 10px;
+    }
+ 
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 15%;
+      margin-top: 35px;
+      margin-bottom :35px; 	 	   
+    }
+
+  </style>
+</head>
+<body>
+   <div class="favicon">
+  <img src="favicon.png" width="120px", align="middle"> 
+   </div>
+
+  <div class="container">
+    <h1>There You Go...</h1>
+    <!-- Create a form element to enclose the login components -->
+    <form id="login-form">
+      <!-- Add a label and an input element for the username -->
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter username" required>
+      <!-- Add a label and an input element for the password -->
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter password" required>
+      <!-- Add a button element to submit the form -->
+      <button type="submit" id="login-button">Login</button>
+      <!-- Add a span element to display the error message -->
+      <span id="error-message" class="error"></span>
+    </form>
+  </div>
+  <!-- Add a script element to include the JavaScript code -->
+  <script>
+    // Get the form element by its id
+    var form = document.getElementById("login-form");
+    // Get the error message element by its id
+    var error = document.getElementById("error-message");
+    // Add an event listener to the form element to handle the submit event
+    form.addEventListener("submit", function(event) {
+      // Prevent the default behavior of the form submission
+      event.preventDefault();
+
+
+
+      // Get the username and password values from the input elements
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+
+
+
+
+ if (username === "Editor" && password === "harbinger" ||username === "Trial_User" && password === "Pass_Code"|| username === "Sumit_Mahato" && password === "Kumar") {
+    // If they are correct, show an alert dialog and reload the page
+    alert("Login successful!");
+    // Set the login status to true
+    loggedIn = true;
+    window.location.replace("quiz.html");
+  } else {
+    // If they are incorrect, show an error message
+    error.textContent = "Invalid username or password";
+  }
+});
+  </script>
+</body>
+</html>
