@@ -74,15 +74,76 @@
       margin-bottom :35px; 	 	   
     }
 
+
+	/* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: rgba(250,250,250,0.2);
+            margin: auto;
+            font-family: 'Ubuntu', sans-serif;
+            padding: 10px;
+            border: 1px solid #888;
+            border-radius: 15px;
+            width: 50%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: black;
+            font-family: 'Ubuntu', sans-serif;
+            float: right;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+
   </style>
 </head>
 <body>
+
+
+
+	<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">×</span>
+    <p align="center"><b>Please Orient to Landscape mode for better UI experience.</b></p>
+  </div>
+
+</div>
+
+
+
    <div class="favicon">
   <img src="favicon.png" width="120px", align="middle"> 
    </div>
 
   <div class="container">
-    <h1>Here You Go...</h1>
+    <h1>There You Go...</h1>
     <!-- Create a form element to enclose the login components -->
     <form id="login-form">
       <!-- Add a label and an input element for the username -->
@@ -99,32 +160,6 @@
   </div>
   <!-- Add a script element to include the JavaScript code -->
   <script>
-
-
-  if (window.matchMedia("(max-width: 600px)").matches) { // Check if the device is a mobile device
-    if (screen.orientation && screen.orientation.lock) { // Check if the orientation API is supported
-        screen.orientation.lock('landscape').then(function() {
-            console.log('Orientation is locked to landscape');
-        }).catch(function(error) {
-            console.error('Orientation could not be locked', error);
-        });
-    }
-
-    var elem = document.documentElement; // Select the webpage
-    if (elem.requestFullscreen) { // Check if Fullscreen API is supported
-        elem.requestFullscreen().then(function() {
-            console.log('Webpage is in fullscreen mode');
-        }).catch(function(error) {
-            console.error('Webpage could not be opened in fullscreen mode', error);
-        });
-    }
-}
-
-
-
-
-
-    
     // Get the form element by its id
     var form = document.getElementById("login-form");
     // Get the error message element by its id
@@ -155,6 +190,32 @@
     error.textContent = "Invalid username or password";
   }
 });
+
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the page loads, open the modal 
+window.onload = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
   </script>
 </body>
 </html>
