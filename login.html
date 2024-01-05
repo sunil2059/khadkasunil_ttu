@@ -99,6 +99,32 @@
   </div>
   <!-- Add a script element to include the JavaScript code -->
   <script>
+
+
+  if (window.matchMedia("(max-width: 600px)").matches) { // Check if the device is a mobile device
+    if (screen.orientation && screen.orientation.lock) { // Check if the orientation API is supported
+        screen.orientation.lock('landscape').then(function() {
+            console.log('Orientation is locked to landscape');
+        }).catch(function(error) {
+            console.error('Orientation could not be locked', error);
+        });
+    }
+
+    var elem = document.documentElement; // Select the webpage
+    if (elem.requestFullscreen) { // Check if Fullscreen API is supported
+        elem.requestFullscreen().then(function() {
+            console.log('Webpage is in fullscreen mode');
+        }).catch(function(error) {
+            console.error('Webpage could not be opened in fullscreen mode', error);
+        });
+    }
+}
+
+
+
+
+
+    
     // Get the form element by its id
     var form = document.getElementById("login-form");
     // Get the error message element by its id
