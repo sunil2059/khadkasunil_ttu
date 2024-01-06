@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<title>MCQs</title>
+<head>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Diphylleia&family=Josefin+Sans:wght@300&family=Lobster&family=Merriweather:wght@300&family=PT+Serif:ital@1&family=Ubuntu:wght@400&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'PT Serif', serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to top left, #66ccff 0%, #ff99ff 100%);
+}
+
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 15%;
+      margin-top: 10px;
+      margin-bottom :5px; 	 	   
+    }
+
+#header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Diphylleia', serif;
+  font-size:30px;
+  color:#000555;
+  margin: 5px;
+  text-align: center;
+}
+
+#quiz {
+  color:#000;
+  font-family: 'Ubuntu', sans-serif;
+  font-size:20px;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 25px;
+}
+
+input[type="submit"] {
+  display: block;
+  font-family: 'Ubuntu', sans-serif;
+  width: 100%;
+  padding: 10px;
+  margin: 5px;
+  background-color: #118dff;
+  opacity:0.95;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#results {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(0, 255, 100, 0.5);
+  
+  border-radius: 25px;
+  font-family: 'Diphylleia', serif;
+}
+
+#timer {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+
+input[type="radio"] {
+    width: 25px;
+    height: 22px;
+    background:#234;
+}
+
+
+</style>
+</head>
+
+<body>
+
+ <div class="favicon">
+  <img src="favicon.png" width="120px", align="middle"> 
+   </div>
+
+
+<h2>Multiple Choice Test on Renal System</h2>
+
+<div id="timer"></div>
+
+<form id="quiz" onsubmit="return showResults();">
+      
+	  <p>Q1:The ureteric buds sprout from:</p>
+  <input type="radio" name="Q1" value="primitive urogenital sinus"> primitive urogenital sinus<br>
+  <input type="radio" name="Q1" value="urinary bladder"> urinary bladder<br>
+  <input type="radio" name="Q1" value="paramesonephric ducts"> paramesonephric ducts<br>
+  <input type="radio" name="Q1" value="mesonephric ducts"> mesonephric ducts<br>
+
+ 
+  <p>Q2:All the following structures are derivatives of metanephric blastema EXCEPT:</p>
+  <input type="radio" name="Q2" value="Collecting tubules"> Collecting tubules<br>
+  <input type="radio" name="Q2" value="Distal convoluted tubules"> Distal convoluted tubules<br>
+  <input type="radio" name="Q2" value="Loop of Henle"> Loop of Henle<br>
+  <input type="radio" name="Q2" value="Proximal convoluted tubules"> Proximal convoluted tubules<br>
+
+ 
+  <p>Q3:Trigone of urinary bladder is:</p>
+  <input type="radio" name="Q3" value="endodermal in origin"> endodermal in origin<br>
+  <input type="radio" name="Q3" value="mesodermal in origin"> mesodermal in origin<br>
+  <input type="radio" name="Q3" value="ectodermal in origin"> ectodermal in origin<br>
+  <input type="radio" name="Q3" value="mixed in origin"> mixed in origin<br>
+
+ 
+  <p>Q4:The macula densa of the juxta glomerular apparatus is seen in:</p>
+  <input type="radio" name="Q4" value="proximal convoluted tubule"> proximal convoluted tubule<br>
+  <input type="radio" name="Q4" value="distal convoluted tubule"> distal convoluted tubule<br>
+  <input type="radio" name="Q4" value="afferent arteriole"> afferent arteriole<br>
+  <input type="radio" name="Q4" value="efferent arteriole"> efferent arteriole<br>
+
+ 
+  <p>Q5:The Merkel cells are located in which of the following layers of epidermis:</p>
+  <input type="radio" name="Q5" value="stratum basale"> stratum basale<br>
+  <input type="radio" name="Q5" value="stratum spinosum"> stratum spinosum<br>
+  <input type="radio" name="Q5" value="stratum granulosum"> stratum granulosum<br>
+  <input type="radio" name="Q5" value="stratum lucidum"> stratum lucidum<br>
+
+ 
+  <p>Q6:The most important physiological buffer in blood is:</p>
+  <input type="radio" name="Q6" value="Phosphate buffer"> Phosphate buffer<br>
+  <input type="radio" name="Q6" value="Bicarbonate buffer"> Bicarbonate buffer<br>
+  <input type="radio" name="Q6" value="Proteinate buffer"> Proteinate buffer<br>
+  <input type="radio" name="Q6" value="Acetate buffer"> Acetate buffer<br>
+
+ 
+  <p>Q7:The minimum excretory volume to eliminate waste products from the body in dehydration is:</p>
+  <input type="radio" name="Q7" value="less than 100 ml"> less than 100 ml<br>
+  <input type="radio" name="Q7" value="100-200 ml"> 100-200 ml<br>
+  <input type="radio" name="Q7" value="500-600 ml"> 500-600 ml<br>
+  <input type="radio" name="Q7" value="800-1000 ml"> 800-1000 ml<br>
+
+ 
+  <p>Q8:Sulphuric acid is produced in the body from:</p>
+  <input type="radio" name="Q8" value="valine"> valine<br>
+  <input type="radio" name="Q8" value="methionine"> methionine<br>
+  <input type="radio" name="Q8" value="glycine"> glycine<br>
+  <input type="radio" name="Q8" value="glutamine"> glutamine<br>
+
+ 
+  <p>Q9:Atrial natriuretic peptide (ANP) is produced by the atrial wall in response to:</p>
+  <input type="radio" name="Q9" value="Aldosterone"> Aldosterone<br>
+  <input type="radio" name="Q9" value="Decreased BP"> Decreased BP<br>
+  <input type="radio" name="Q9" value="Kinins"> Kinins<br>
+  <input type="radio" name="Q9" value="Increased intravascular volume"> Increased intravascular volume<br>
+
+ 
+  <p>Q10:Flea bitten kidney is seen in all of the following conditions EXCEPT:</p>
+  <input type="radio" name="Q10" value="malignant nephrosclerosis"> malignant nephrosclerosis<br>
+  <input type="radio" name="Q10" value="bacterial endocarditis"> bacterial endocarditis<br>
+  <input type="radio" name="Q10" value="rapidly progressive glomerulonephritis"> rapidly progressive glomerulonephritis<br>
+  <input type="radio" name="Q10" value="chronic pyelonephritis"> chronic pyelonephritis<br>
+
+ 
+  <p>Q11:Nephrotic syndrome in adults is most commonly secondary to:</p>
+  <input type="radio" name="Q11" value="lipoid nephrosis"> lipoid nephrosis<br>
+  <input type="radio" name="Q11" value="membranous nephropathy"> membranous nephropathy<br>
+  <input type="radio" name="Q11" value="IgA nephropathy"> IgA nephropathy<br>
+  <input type="radio" name="Q11" value="Membrane proliferative glomerulonephritis"> Membrane proliferative glomerulonephritis<br>
+
+ 
+  <p>Q12:Lipoid nephrosis of the kidney produces ultra structural changes in which of the following renal glomerular elements:</p>
+  <input type="radio" name="Q12" value="endothelium"> endothelium<br>
+  <input type="radio" name="Q12" value="epithelium"> epithelium<br>
+  <input type="radio" name="Q12" value="basement membrane"> basement membrane<br>
+  <input type="radio" name="Q12" value="mesangium"> mesangium<br>
+
+ 
+  <p>Q13:All of the following clinical features are likely to be found in a patient of nephrotic syndrome EXCEPT:</p>
+  <input type="radio" name="Q13" value="proteinuria"> proteinuria<br>
+  <input type="radio" name="Q13" value="red cell casts"> red cell casts<br>
+  <input type="radio" name="Q13" value="hyperlipidemia"> hyperlipidemia<br>
+  <input type="radio" name="Q13" value="oedema"> oedema<br>
+
+ 
+  <p>Q14:In most cases of non obstructive chronic pyelonephritis, bacteria reach the kidney Via:</p>
+  <input type="radio" name="Q14" value="the blood stream"> the blood stream<br>
+  <input type="radio" name="Q14" value="the lymphatics"> the lymphatics<br>
+  <input type="radio" name="Q14" value="vesicoureteric reflex"> vesicoureteric reflex<br>
+  <input type="radio" name="Q14" value="arteriovenous shunts"> arteriovenous shunts<br>
+
+ 
+  <p>Q15:Commonest site for basal cell carcinoma is:</p>
+  <input type="radio" name="Q15" value="trunk"> trunk<br>
+  <input type="radio" name="Q15" value="face"> face<br>
+  <input type="radio" name="Q15" value="extremities"> extremities<br>
+  <input type="radio" name="Q15" value="genitalia"> genitalia<br>
+
+ 
+  <p>Q16:All of the following are causes of bladder carcinoma, EXCEPT:</p>
+  <input type="radio" name="Q16" value="Cyclophosphamide"> Cyclophosphamide<br>
+  <input type="radio" name="Q16" value="Smoking"> Smoking<br>
+  <input type="radio" name="Q16" value="Benign prostatic hyperplasia"> Benign prostatic hyperplasia<br>
+  <input type="radio" name="Q16" value="Chronic alcoholism"> Chronic alcoholism<br>
+
+ 
+  <p>Q17:Paraneoplastic syndrome is a feature of:</p>
+  <input type="radio" name="Q17" value="Nephroblastoma"> Nephroblastoma<br>
+  <input type="radio" name="Q17" value="Hypernephroma"> Hypernephroma<br>
+  <input type="radio" name="Q17" value="Bladder carcinoma"> Bladder carcinoma<br>
+  <input type="radio" name="Q17" value="Ureteral carcinoma"> Ureteral carcinoma<br>
+
+ 
+  <p>Q18:Which type of anaemia is encountered in chronic renal failure:</p>
+  <input type="radio" name="Q18" value="Microcytic & hypochromic anaemia"> Microcytic & hypochromic anaemia<br>
+  <input type="radio" name="Q18" value="Normocytic & normochromic anaemia"> Normocytic & normochromic anaemia<br>
+  <input type="radio" name="Q18" value="Dimorphic anaemia"> Dimorphic anaemia<br>
+  <input type="radio" name="Q18" value="Macrocytic & normochromic anaemia"> Macrocytic & normochromic anaemia<br>
+
+ 
+  <p>Q19:A sample (0.001 ml) of midstream urine from an adult female was plated on Mac Conkey's medium. Following incubation, 30 colonies of Esch. Coli. were observe The colony count represents:</p>
+  <input type="radio" name="Q19" value="Insignificant bacteriuria"> Insignificant bacteriuria<br>
+  <input type="radio" name="Q19" value="Significant bacteriuria"> Significant bacteriuria<br>
+  <input type="radio" name="Q19" value="Asymptomatic bacteriuria"> Asymptomatic bacteriuria<br>
+  <input type="radio" name="Q19" value="Borderline significance-needs repeat culture"> Borderline significance-needs repeat culture<br>
+
+ 
+  <p>Q20:Pigment production by dermatophytic fungi in culture is best seen by:</p>
+  <input type="radio" name="Q20" value="exposing the culture tube to Wood's lamp."> exposing the culture tube to Wood's lamp.<br>
+  <input type="radio" name="Q20" value="Examining the culture after brief exposure to infra-red radiation"> Examining the culture after brief exposure to infra-red radiation<br>
+  <input type="radio" name="Q20" value="Observing the reverse side of the medium"> Observing the reverse side of the medium<br>
+  <input type="radio" name="Q20" value="Observing the obverse side of the medium"> Observing the obverse side of the medium<br>
+
+ 
+  <p>Q21:Tinea unquium is caused by:</p>
+  <input type="radio" name="Q21" value="epidermophyton flocossum"> epidermophyton flocossum<br>
+  <input type="radio" name="Q21" value="trichophyton violaceum"> trichophyton violaceum<br>
+  <input type="radio" name="Q21" value="trichophyton tonsmans"> trichophyton tonsmans<br>
+  <input type="radio" name="Q21" value="pityrosporum orbicularis"> pityrosporum orbicularis<br>
+
+ 
+  <p>Q22:Which of the following urine samples is the most appropriate to diagnose renal tuberculosis:</p>
+  <input type="radio" name="Q22" value="early morning mid stream urine specimen"> early morning mid stream urine specimen<br>
+  <input type="radio" name="Q22" value="early morning whole specimen on three consecutive days"> early morning whole specimen on three consecutive days<br>
+  <input type="radio" name="Q22" value="mid stream urine specimen on any time of the day"> mid stream urine specimen on any time of the day<br>
+  <input type="radio" name="Q22" value="24 hour urine sample"> 24 hour urine sample<br>
+
+ 
+  <p>Q23:Which of the following agents is used in fungal infection of finger nails ?</p>
+  <input type="radio" name="Q23" value="Ketoconazole"> Ketoconazole<br>
+  <input type="radio" name="Q23" value="Nystatin"> Nystatin<br>
+  <input type="radio" name="Q23" value="Griseofulvin"> Griseofulvin<br>
+  <input type="radio" name="Q23" value="Amphotericin B"> Amphotericin B<br>
+
+ 
+  <p>Q24:Which one of the following statements is NOT correct about Dapsone?</p>
+  <input type="radio" name="Q24" value="It is related to sulfonamides"> It is related to sulfonamides<br>
+  <input type="radio" name="Q24" value="It acts by inhibition of folate synthetase"> It acts by inhibition of folate synthetase<br>
+  <input type="radio" name="Q24" value="It causes haemolytic anaemia"> It causes haemolytic anaemia<br>
+  <input type="radio" name="Q24" value="It is bactericidal"> It is bactericidal<br>
+
+ 
+  <p>Q25:Which of the following agents is most suitable in urinary tract infection with coli in a pregnant woman ?</p>
+  <input type="radio" name="Q25" value="Co-trimoxazole"> Co-trimoxazole<br>
+  <input type="radio" name="Q25" value="Ciprofloxacin"> Ciprofloxacin<br>
+  <input type="radio" name="Q25" value="Cephalexin"> Cephalexin<br>
+  <input type="radio" name="Q25" value="Doxycycline"> Doxycycline<br>
+
+ 
+  <p>Q26:Which one of the following diuretics increases excretion of calcium ?</p>
+  <input type="radio" name="Q26" value="Mannitol"> Mannitol<br>
+  <input type="radio" name="Q26" value="Furosemide"> Furosemide<br>
+  <input type="radio" name="Q26" value="Triamterene"> Triamterene<br>
+  <input type="radio" name="Q26" value="Hydrochlorothiazide"> Hydrochlorothiazide<br>
+
+ 
+  <p>Q27:Which one of the following diuretics increases plasma uric acid level ?</p>
+  <input type="radio" name="Q27" value="Mannitol"> Mannitol<br>
+  <input type="radio" name="Q27" value="Hydrochlorothiazide"> Hydrochlorothiazide<br>
+  <input type="radio" name="Q27" value="Acetazolamide"> Acetazolamide<br>
+  <input type="radio" name="Q27" value="Spiranolactone"> Spiranolactone<br>
+
+ 
+  <p>Q28:In brain stem death:</p>
+  <input type="radio" name="Q28" value="spontaneous respiration continues"> spontaneous respiration continues<br>
+  <input type="radio" name="Q28" value="spontaneous cardiac action continues"> spontaneous cardiac action continues<br>
+  <input type="radio" name="Q28" value="gag reflex is present"> gag reflex is present<br>
+  <input type="radio" name="Q28" value="patient is in semiconscious state"> patient is in semiconscious state<br>
+
+ 
+  <p>Q29:'Persistant vegetative state' occurs in:</p>
+  <input type="radio" name="Q29" value="somatic death"> somatic death<br>
+  <input type="radio" name="Q29" value="molecular death"> molecular death<br>
+  <input type="radio" name="Q29" value="cortical  death"> cortical  death<br>
+  <input type="radio" name="Q29" value="brain stem death"> brain stem death<br>
+
+ 
+  <p>Q30:In burns, carbon monoxide causes death due to asphyxia by:</p>
+  <input type="radio" name="Q30" value="displaing oxygen from its combination with haemoglobin"> displaing oxygen from its combination with haemoglobin<br>
+  <input type="radio" name="Q30" value="forming a tonic compound with blood"> forming a tonic compound with blood<br>
+  <input type="radio" name="Q30" value="inhibiting the cytochrome oxidase enzyme"> inhibiting the cytochrome oxidase enzyme<br>
+  <input type="radio" name="Q30" value="injuring the air passage"> injuring the air passage<br>
+
+ 
+
+
+ 
+
+
+
+
+ 
+
+
+  <input type="submit" value="Submit">
+</form>
+
+
+<div id="results"></div>
+
+<script>
+
+
+var timeLeft = 500;
+var timer = document.getElementById('timer');
+var timerId = setInterval(countdown, 1000);
+
+function countdown() {
+  if (timeLeft == 0) {
+    clearTimeout(timerId);
+    showResults();
+  } else {
+    timer.innerHTML = timeLeft + ' seconds remaining';
+    timeLeft--;
+  }
+}
+
+var correctAnswers = {
+Q1: 'mesonephric ducts', 
+Q2: 'Collecting tubules', 
+Q3: 'mesodermal in origin', 
+Q4: 'distal convoluted tubule', 
+Q5: 'stratum basale', 
+Q6: 'Bicarbonate buffer', 
+Q7: '500-600 ml', 
+Q8: 'methionine', 
+Q9: 'Increased intravascular volume', 
+Q10: 'chronic pyelonephritis', 
+Q11: 'membranous nephropathy', 
+Q12: 'epithelium', 
+Q13: 'red cell casts', 
+Q14: 'vesicoureteric reflex', 
+Q15: 'face', 
+Q16: 'Benign prostatic hyperplasia', 
+Q17: 'Hypernephroma', 
+Q18: 'Normocytic & normochromic anaemia', 
+Q19: 'Borderline significance-needs repeat culture', 
+Q20: 'Observing the reverse side of the medium', 
+Q21: 'epidermophyton flocossum', 
+Q22: 'early morning whole specimen on three consecutive days', 
+Q23: 'Griseofulvin', 
+Q24: 'It is bactericidal', 
+Q25: 'Cephalexin', 
+Q26: 'Furosemide', 
+Q27: 'Hydrochlorothiazide', 
+Q28: 'spontaneous respiration continues', 
+Q29: 'cortical  death', 
+Q30: 'displaing oxygen from its combination with haemoglobin', 
+
+
+
+
+};
+
+var answerText = {
+Q1: 'mesonephric ducts', 
+Q2: 'Collecting tubules', 
+Q3: 'mesodermal in origin', 
+Q4: 'distal convoluted tubule', 
+Q5: 'stratum basale', 
+Q6: 'Bicarbonate buffer', 
+Q7: '500-600 ml', 
+Q8: 'methionine', 
+Q9: 'Increased intravascular volume', 
+Q10: 'chronic pyelonephritis', 
+Q11: 'membranous nephropathy', 
+Q12: 'epithelium', 
+Q13: 'red cell casts', 
+Q14: 'vesicoureteric reflex', 
+Q15: 'face', 
+Q16: 'Benign prostatic hyperplasia', 
+Q17: 'Hypernephroma', 
+Q18: 'Normocytic & normochromic anaemia', 
+Q19: 'Borderline significance-needs repeat culture', 
+Q20: 'Observing the reverse side of the medium', 
+Q21: 'epidermophyton flocossum', 
+Q22: 'early morning whole specimen on three consecutive days', 
+Q23: 'Griseofulvin', 
+Q24: 'It is bactericidal', 
+Q25: 'Cephalexin', 
+Q26: 'Furosemide', 
+Q27: 'Hydrochlorothiazide', 
+Q28: 'spontaneous respiration continues', 
+Q29: 'cortical  death', 
+Q30: 'displaing oxygen from its combination with haemoglobin', 
+
+
+
+};
+
+function showResults() {
+  var quiz = document.getElementById('quiz');
+  var results = document.getElementById('results');
+  var correct = 0;
+  var answerList = '';
+
+  for (var question in correctAnswers) {
+    var radios = quiz[question];
+    for (var i = 0; i < radios.length; i++) {
+      var radio = radios[i];
+      if (radio.value == correctAnswers[question] && radio.checked) {
+        correct++;
+      }
+    }
+    answerList += 'Answer ' + question + ': ' + answerText[question] + '<br>';
+  }
+
+  results.innerHTML = 'You got ' + correct + ' out of ' + Object.keys(correctAnswers).length + ' questions correct.<br>' + answerList;
+  return false;
+}
+
+
+
+</script>
+
+</body>
+</html>

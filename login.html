@@ -92,10 +92,10 @@
 
         /* Modal Content */
         .modal-content {
-            background-color: rgba(250,250,250,0.5);
+            background-color: rgba(250,250,250,0.2);
             margin: auto;
             font-family: 'Ubuntu', sans-serif;
-            padding: 20px;
+            padding: 10px;
             border: 1px solid #888;
             border-radius: 15px;
             width: 50%;
@@ -143,7 +143,7 @@
    </div>
 
   <div class="container">
-    <h1>There You Go...</h1>
+    <h1>Here You Go...</h1>
     <!-- Create a form element to enclose the login components -->
     <form id="login-form">
       <!-- Add a label and an input element for the username -->
@@ -179,13 +179,19 @@
 
 
 
- if (username === "Editor" && password === "harbinger" ||username === "Trial_User" && password === "Pass_Code"|| username === "Sumit_Mahato" && password === "Kumar") {
+ if (username === "Trial" && password === "Trial_Pass" ||username === "Trial_User" && password === "Pass_Code"|| username === "000" && password === "111") {
     // If they are correct, show an alert dialog and reload the page
     alert("Login successful!");
     // Set the login status to true
     loggedIn = true;
     window.location.replace("Quiz.html");
-  } else {
+  } else if (username === "Editor" && password === "Harbinger" ||username === "P_Sumit" && password === "Pass_2325"|| username === "2326" && password === "2623") {
+    // If they are correct, show an alert dialog and reload the page
+    alert("Login successful!");
+    // Set the login status to true
+    loggedIn = true;
+    window.location.replace("Renal.html");
+  }else {
     // If they are incorrect, show an error message
     error.textContent = "Invalid username or password";
   }
