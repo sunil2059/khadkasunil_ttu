@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>MCQs</title>
+<title>https://khadkasunil.com.np</title>
 <head>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,11 +75,6 @@ input[type="submit"] {
   font-family: 'Diphylleia', serif;
 }
 
-#timer {
-  text-align: center;
-  font-size: 20px;
-  margin-top: 5px;
-}
 
 
 input[type="radio"] {
@@ -101,7 +96,7 @@ input[type="radio"] {
 
 <h2>Multiple Choice Test on Renal System</h2>
 
-<div id="timer"></div>
+
 
 <form id="quiz" onsubmit="return showResults();">
       
@@ -334,19 +329,6 @@ input[type="radio"] {
 <script>
 
 
-var timeLeft = 750;
-var timer = document.getElementById('timer');
-var timerId = setInterval(countdown, 1000);
-
-function countdown() {
-  if (timeLeft == -1) {
-    clearTimeout(timerId);
-    showResults();
-  } else {
-    timer.innerHTML = timeLeft + ' seconds remaining';
-    timeLeft--;
-  }
-}
 
 var correctAnswers = {
 Q1: 'mesonephric ducts', 
@@ -441,6 +423,8 @@ function showResults() {
   results.innerHTML = 'You got ' + correct + ' out of ' + Object.keys(correctAnswers).length + ' questions correct.<br>' + answerList;
   return false;
 }
+
+
 
 
 
