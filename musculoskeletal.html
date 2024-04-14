@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<title>https://khadkasunil.com.np</title>
+<head>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Diphylleia&family=Josefin+Sans:wght@300&family=Lobster&family=Merriweather:wght@300&family=PT+Serif:ital@1&family=Ubuntu:wght@400&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'PT Serif', serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to top left, #66ccff 0%, #ff99ff 100%);
+}
+
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 15%;
+      margin-top: 10px;
+      margin-bottom :5px; 	 	   
+    }
+
+#header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Diphylleia', serif;
+  font-size:30px;
+  color:#000555;
+  margin: 5px;
+  text-align: center;
+}
+
+#quiz {
+  color:#000;
+  font-family: 'Ubuntu', sans-serif;
+  font-size:20px;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 25px;
+}
+
+input[type="submit"] {
+  display: block;
+  font-family: 'Ubuntu', sans-serif;
+  width: 100%;
+  padding: 10px;
+  margin: 5px;
+  background-color: #118dff;
+  opacity:0.95;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#results {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(0, 255, 100, 0.5);
+  
+  border-radius: 25px;
+  font-family: 'Diphylleia', serif;
+}
+
+
+
+input[type="radio"] {
+    width: 25px;
+    height: 22px;
+    background:#234;
+}
+
+
+</style>
+</head>
+
+<body>
+
+ <div class="favicon">
+  <img src="favicon.png" width="120px", align="middle"> 
+   </div>
+
+
+<h2>Multiple Choice Test on Renal System</h2>
+
+
+
+<form id="quiz" onsubmit="return showResults();">
+      
+	     <p>Q1:Which one of the following is attached to the lingula of the mandible?</p>
+  <input type="radio" name="Q1" value="Sphenomandibular ligament"> Sphenomandibular ligament<br>
+  <input type="radio" name="Q1" value="Stylomandibular ligament"> Stylomandibular ligament<br>
+  <input type="radio" name="Q1" value="Pterygomandibular raphae"> Pterygomandibular raphae<br>
+  <input type="radio" name="Q1" value="Superior constrictor of pharynx"> Superior constrictor of pharynx<br>
+
+ 
+  <p>Q2:Which one of the followings is referred to as the grinning muscles?</p>
+  <input type="radio" name="Q2" value="Levator labii superioris"> Levator labii superioris<br>
+  <input type="radio" name="Q2" value="Levator angulioris"> Levator angulioris<br>
+  <input type="radio" name="Q2" value="Zygomaticus major"> Zygomaticus major<br>
+  <input type="radio" name="Q2" value="Zygomaticus minor"> Zygomaticus minor<br>
+
+ 
+  <p>Q3:The average age for eruption of the first premolar tooth is nearest to:</p>
+  <input type="radio" name="Q3" value="4 years"> 4 years<br>
+  <input type="radio" name="Q3" value="6 years"> 6 years<br>
+  <input type="radio" name="Q3" value="8 years"> 8 years<br>
+  <input type="radio" name="Q3" value="10 years"> 10 years<br>
+
+ 
+  <p>Q4:The sensory nerve supply of the palatine tonsil is derived from the:</p>
+  <input type="radio" name="Q4" value="Lingual nerve"> Lingual nerve<br>
+  <input type="radio" name="Q4" value="Chorda tympani"> Chorda tympani<br>
+  <input type="radio" name="Q4" value="Interior alveolar nerve"> Interior alveolar nerve<br>
+  <input type="radio" name="Q4" value="Glossopharyngeal nerve"> Glossopharyngeal nerve<br>
+
+ 
+  <p>Q5:Which one of the following DOES NOT pass through the foramen magnum?</p>
+  <input type="radio" name="Q5" value="Apical ligament of dons"> Apical ligament of dons<br>
+  <input type="radio" name="Q5" value="Membrana tectoria"> Membrana tectoria<br>
+  <input type="radio" name="Q5" value="Vertebral artery"> Vertebral artery<br>
+  <input type="radio" name="Q5" value="Spinal cord"> Spinal cord<br>
+
+ 
+  <p>Q6:Orbicularis Oculi muscle is supplied by:</p>
+  <input type="radio" name="Q6" value="Supratrochlear nerve"> Supratrochlear nerve<br>
+  <input type="radio" name="Q6" value="Supraorbital nerve"> Supraorbital nerve<br>
+  <input type="radio" name="Q6" value="Infraorbital nerve"> Infraorbital nerve<br>
+  <input type="radio" name="Q6" value="Facial nerve"> Facial nerve<br>
+
+ 
+  <p>Q7:Inferior thyroid vein drains directly into:</p>
+  <input type="radio" name="Q7" value="Internal jugular vein"> Internal jugular vein<br>
+  <input type="radio" name="Q7" value="External jugular vain"> External jugular vain<br>
+  <input type="radio" name="Q7" value="Brachiocephalic vein"> Brachiocephalic vein<br>
+  <input type="radio" name="Q7" value="Facial vein"> Facial vein<br>
+
+ 
+  <p>Q8:Carotid sheath contains following structures EXCEPT:</p>
+  <input type="radio" name="Q8" value="Internal carotid artery"> Internal carotid artery<br>
+  <input type="radio" name="Q8" value="External carotid artery"> External carotid artery<br>
+  <input type="radio" name="Q8" value="Common carotid artery"> Common carotid artery<br>
+  <input type="radio" name="Q8" value="Internal jugular vein"> Internal jugular vein<br>
+
+ 
+  <p>Q9:Following muscles form the floor of carotid triangle EXCEPT:</p>
+  <input type="radio" name="Q9" value="Thyrohyoid"> Thyrohyoid<br>
+  <input type="radio" name="Q9" value="Stylohyoid"> Stylohyoid<br>
+  <input type="radio" name="Q9" value="Hyoglossus"> Hyoglossus<br>
+  <input type="radio" name="Q9" value="Middle constrictor muscle of pharynx"> Middle constrictor muscle of pharynx<br>
+
+ 
+  <p>Q10:Following papillae of tongue have taste buds EXCEPT:</p>
+  <input type="radio" name="Q10" value="Filiform"> Filiform<br>
+  <input type="radio" name="Q10" value="Fungiform"> Fungiform<br>
+  <input type="radio" name="Q10" value="Circumvallate"> Circumvallate<br>
+  <input type="radio" name="Q10" value="Foliate"> Foliate<br>
+
+ 
+  <p>Q11:Fovea centralis:</p>
+  <input type="radio" name="Q11" value="Is a non-sensitive pit"> Is a non-sensitive pit<br>
+  <input type="radio" name="Q11" value="Is highly vascular"> Is highly vascular<br>
+  <input type="radio" name="Q11" value="Contains only cones"> Contains only cones<br>
+  <input type="radio" name="Q11" value="Contains only rods"> Contains only rods<br>
+
+ 
+  <p>Q12:Which one of the following statement is NOT TRUE about cornea?</p>
+  <input type="radio" name="Q12" value="It is an avascular structure"> It is an avascular structure<br>
+  <input type="radio" name="Q12" value="It is lined by stratified columnar epithelium"> It is lined by stratified columnar epithelium<br>
+  <input type="radio" name="Q12" value="It is nourished by aqueous humor"> It is nourished by aqueous humor<br>
+  <input type="radio" name="Q12" value="It is thinner at the center and thicker at the periphery"> It is thinner at the center and thicker at the periphery<br>
+
+ 
+  <p>Q13:The cross bridge of the sarcomere in skeletal muscles are made up of:</p>
+  <input type="radio" name="Q13" value="Actin"> Actin<br>
+  <input type="radio" name="Q13" value="Myosin"> Myosin<br>
+  <input type="radio" name="Q13" value="Troponin"> Troponin<br>
+  <input type="radio" name="Q13" value="Tropomyosin"> Tropomyosin<br>
+
+ 
+  <p>Q14:The main reason for occurrence or rigor mortis in skeletal muscle after death is:</p>
+  <input type="radio" name="Q14" value="Increase in intracellular ca2+ level"> Increase in intracellular ca2+ level<br>
+  <input type="radio" name="Q14" value="Decrease in intracellular Mg2+ level"> Decrease in intracellular Mg2+ level<br>
+  <input type="radio" name="Q14" value="Increase in intracellular Na+ level"> Increase in intracellular Na+ level<br>
+  <input type="radio" name="Q14" value="Decrease in ATP level"> Decrease in ATP level<br>
+
+ 
+  <p>Q15:Which of the following pairing is TRUE?</p>
+  <input type="radio" name="Q15" value="Sweet taste=T1R3 family of G protein"> Sweet taste=T1R3 family of G protein<br>
+  <input type="radio" name="Q15" value="Sour taste=T2R family of G protein"> Sour taste=T2R family of G protein<br>
+  <input type="radio" name="Q15" value="Umami taste=ENaC"> Umami taste=ENaC<br>
+  <input type="radio" name="Q15" value="Salty taste=mGluR4"> Salty taste=mGluR4<br>
+
+ 
+  <p>Q16:Formation of active-form of Vitamin D involves a set of organs:</p>
+  <input type="radio" name="Q16" value="Skin + intestinal mucosa + liver"> Skin + intestinal mucosa + liver<br>
+  <input type="radio" name="Q16" value="Skin + liver + kidney"> Skin + liver + kidney<br>
+  <input type="radio" name="Q16" value="Skeletal muscle + liver + kidney"> Skeletal muscle + liver + kidney<br>
+  <input type="radio" name="Q16" value="Skin + skeletal muscle + kidney"> Skin + skeletal muscle + kidney<br>
+
+ 
+  <p>Q17:The form of vitamin A which combines with opsin to form Rhodopsin, a key molecule involved in the visual process is:</p>
+  <input type="radio" name="Q17" value="11- cis retinal"> 11- cis retinal<br>
+  <input type="radio" name="Q17" value="All cis retinal"> All cis retinal<br>
+  <input type="radio" name="Q17" value="11 trans retinol"> 11 trans retinol<br>
+  <input type="radio" name="Q17" value="All trans retinol"> All trans retinol<br>
+
+ 
+  <p>:Sebaceous carcinoma occurs most commonly in:</p>
+  <input type="radio" name="" value="Axilla"> Axilla<br>
+  <input type="radio" name="" value="Groin"> Groin<br>
+  <input type="radio" name="" value="Upper eye lid"> Upper eye lid<br>
+  <input type="radio" name="" value="Lower eye lid"> Lower eye lid<br>
+
+ 
+  <p>Q19:A 30-year-old female presented with complain of early morning joint stiffness, malaise and weakness. On examination there was knee joint swelling and limitation of joint movement. What is the probable clinical diagnosis?</p>
+  <input type="radio" name="Q19" value="Gout"> Gout<br>
+  <input type="radio" name="Q19" value="Rheumatoid Arthritis"> Rheumatoid Arthritis<br>
+  <input type="radio" name="Q19" value="Osteomyelitis"> Osteomyelitis<br>
+  <input type="radio" name="Q19" value="Osteosarcoma"> Osteosarcoma<br>
+
+ 
+  <p>Q20:The  anatomic  changes  of  severe hyperparathyroidism seen in bone is known as:</p>
+  <input type="radio" name="Q20" value="Dissecting Osteitis"> Dissecting Osteitis<br>
+  <input type="radio" name="Q20" value="Osteosclerosis"> Osteosclerosis<br>
+  <input type="radio" name="Q20" value="Osteomalacia"> Osteomalacia<br>
+  <input type="radio" name="Q20" value="Osteitis fibrosa cystica"> Osteitis fibrosa cystica<br>
+
+ 
+  <p>Q21:The commonest organism causing malignant otitis externa is:</p>
+  <input type="radio" name="Q21" value="Staphylococcus aureus"> Staphylococcus aureus<br>
+  <input type="radio" name="Q21" value="Klebsiella pneumoniae"> Klebsiella pneumoniae<br>
+  <input type="radio" name="Q21" value="Pseudomonas aeruginosa"> Pseudomonas aeruginosa<br>
+  <input type="radio" name="Q21" value="Streptococcus pneumoniae"> Streptococcus pneumoniae<br>
+
+ 
+  <p>Q22:Plasma calcium level is increased by which one of the following drugs?</p>
+  <input type="radio" name="Q22" value="Calcitonin"> Calcitonin<br>
+  <input type="radio" name="Q22" value="Furosemide"> Furosemide<br>
+  <input type="radio" name="Q22" value="Prednisolone"> Prednisolone<br>
+  <input type="radio" name="Q22" value="Parathormone"> Parathormone<br>
+
+ 
+  <p>Q23:Which of the following drugs is NOT used in the treatment of acute gout?</p>
+  <input type="radio" name="Q23" value="Diclofenac"> Diclofenac<br>
+  <input type="radio" name="Q23" value="Aspirin"> Aspirin<br>
+  <input type="radio" name="Q23" value="Colchicine"> Colchicine<br>
+  <input type="radio" name="Q23" value="Indomethiaen"> Indomethiaen<br>
+
+ 
+  <p>Q24:Which of the following drugs produces miosis?</p>
+  <input type="radio" name="Q24" value="Homatripine"> Homatripine<br>
+  <input type="radio" name="Q24" value="Tropicamide"> Tropicamide<br>
+  <input type="radio" name="Q24" value="Pilocarpine"> Pilocarpine<br>
+  <input type="radio" name="Q24" value="Phenylephrine"> Phenylephrine<br>
+
+ 
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+
+
+ 
+
+
+  <input type="submit" value="Submit">
+</form>
+
+
+<div id="results"></div>
+
+<script>
+
+
+
+var correctAnswers = {
+Q1: 'Sphenomandibular ligament', 
+Q2: 'Zygomaticus major', 
+Q3: '6 years', 
+Q4: 'Glossopharyngeal nerve', 
+Q5: 'Spinal cord', 
+Q6: 'Facial nerve', 
+Q7: 'Brachiocephalic vein', 
+Q8: 'External carotid artery', 
+Q9: 'Stylohyoid', 
+Q10: 'Filiform', 
+Q11: 'Contains only cones', 
+Q12: 'It is lined by stratified columnar epithelium', 
+Q13: 'Myosin', 
+Q14: 'Decrease in ATP level', 
+Q15: 'Sweet taste=T1R3 family of G protein', 
+Q16: 'Skin + liver + kidney', 
+Q17: '11- cis retinal', 
+Q18: 'Upper eye lid', 
+Q19: 'Rheumatoid Arthritis', 
+Q20: 'Osteitis fibrosa cystica', 
+Q21: 'Pseudomonas aeruginosa', 
+Q22: 'Parathormone', 
+Q23: 'Aspirin', 
+Q24: 'Pilocarpine', 
+
+
+
+
+
+
+
+};
+
+var answerText = {
+Q1: 'Sphenomandibular ligament', 
+Q2: 'Zygomaticus major', 
+Q3: '6 years', 
+Q4: 'Glossopharyngeal nerve', 
+Q5: 'Spinal cord', 
+Q6: 'Facial nerve', 
+Q7: 'Brachiocephalic vein', 
+Q8: 'External carotid artery', 
+Q9: 'Stylohyoid', 
+Q10: 'Filiform', 
+Q11: 'Contains only cones', 
+Q12: 'It is lined by stratified columnar epithelium', 
+Q13: 'Myosin', 
+Q14: 'Decrease in ATP level', 
+Q15: 'Sweet taste=T1R3 family of G protein', 
+Q16: 'Skin + liver + kidney', 
+Q17: '11- cis retinal', 
+Q18: 'Upper eye lid', 
+Q19: 'Rheumatoid Arthritis', 
+Q20: 'Osteitis fibrosa cystica', 
+Q21: 'Pseudomonas aeruginosa', 
+Q22: 'Parathormone', 
+Q23: 'Aspirin', 
+Q24: 'Pilocarpine', 
+ 
+
+
+
+};
+
+function showResults() {
+  var quiz = document.getElementById('quiz');
+  var results = document.getElementById('results');
+  var correct = 0;
+  var answerList = '';
+
+  for (var question in correctAnswers) {
+    var radios = quiz[question];
+    for (var i = 0; i < radios.length; i++) {
+      var radio = radios[i];
+      if (radio.value == correctAnswers[question] && radio.checked) {
+        correct++;
+      }
+    }
+    answerList += 'Answer ' + question + ': ' + answerText[question] + '<br>';
+  }
+
+  results.innerHTML = 'You got ' + correct + ' out of ' + Object.keys(correctAnswers).length + ' questions correct.<br>' + answerList;
+  return false;
+}
+
+
+
+
+
+</script>
+
+</body>
+</html>
