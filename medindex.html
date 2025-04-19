@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Quiz</title>
+    <link rel="stylesheet" href="medstyles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <!-- Name Entry Form -->
+        <div id="name-container">
+            <img src="https://khadkasunil.com.np/images/Logo_khadkasunil.png" alt="Brand Logo" class="brand-logo">
+            <h2>Please enter your name to start the quiz:</h2>
+            <input type="text" id="username" placeholder="Enter your name" />
+            <button id="start-btn" onclick="startQuiz()">Start Quiz</button>
+        </div>
+
+        <!-- Quiz content will be shown after starting the quiz -->
+        <div id="quiz-content" style="display: none;">
+            <div id="timer">Time Left: 15s</div>
+            <div id="question"></div>
+            <div id="options"></div>
+            <button id="next-btn" onclick="nextQuestion()">Next Question</button>
+            <div id="feedback"></div>
+            <div id="explanation"></div>
+            <div id="score" style="display: none;"></div>
+            <button id="restart-btn" onclick="restartQuiz()" style="display: none;">Restart Quiz</button>
+        </div>
+    </div>
+
+    <script src="medscript.js"></script>
+</body>
+</html>

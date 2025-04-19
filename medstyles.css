@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    background: url('https://source.unsplash.com/1600x900/?medical,health') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quiz-container {
+    width: 90%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+.brand-logo {
+    width: 150px;
+    display: block;
+    margin: 10px auto;
+}
+
+h1 {
+    color: #673ab7;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+#timer {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #e91e63;
+    font-weight: bold;
+}
+
+.option-btn {
+    display: block;
+    width: 100%;
+    margin: 5px auto;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #64B5F6;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.option-btn:hover {
+    background-color: #1565C0;
+    color: white;
+}
+
+.selected-correct {
+    background-color: #4CAF50 !important; /* Green for correct answer */
+}
+
+.selected-wrong {
+    background-color: #F44336 !important; /* Red for wrong answer */
+}
+
+button {
+    padding: 12px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    border: none;
+    background-color: #673ab7;
+    color: white;
+    border-radius: 5px;
+    transition: 0.3s;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #512da8;
+}
+
+#score {
+    font-size: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#restart-btn {
+    padding: 12px;
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    border-radius: 5px;
+    width: 100%;
+}
+
+#restart-btn:hover {
+    background-color: #1a237e;
+}
+
+#explanation {
+    font-size: 16px;
+    margin-top: 10px;
+    color: #555;
+}
+
+#feedback {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #e91e63;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .quiz-container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .option-btn {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+
+    #score {
+        font-size: 18px;
+    }
+}
