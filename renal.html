@@ -106,6 +106,8 @@
   </style>
 </head>
 <body>
+  <body oncontextmenu="return false;">
+
 
 <div id="name-container">
   <img class="logo" src="https://khadkasunil.com.np/images/Logo_khadkasunil.png" alt="Brand Logo">
@@ -291,5 +293,26 @@ function restartQuiz() {
   displayQuestion();
 }
 </script>
+  <script>
+  document.addEventListener('keydown', function (e) {
+    // F12
+    if (e.key === "F12") {
+      e.preventDefault();
+    }
+    // Ctrl+Shift+I
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+      e.preventDefault();
+    }
+    // Ctrl+U
+    if (e.ctrlKey && e.key === 'u') {
+      e.preventDefault();
+    }
+    // Ctrl+Shift+J
+    if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+      e.preventDefault();
+    }
+  });
+</script>
+
 </body>
 </html>
