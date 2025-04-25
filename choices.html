@@ -1,328 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Lobster&family=Merriweather:wght@300&family=PT+Serif:ital@1&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Selector</title>
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
 
-    <style>
-
-	    img {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 15%;
-      margin-top: 25px;
-      margin-bottom :10px; 	 	   
-    }
-
+  <style>
     body {
       font-family: 'Josefin Sans', sans-serif;
-background: linear-gradient(to top left, #66ccff 20%, #ff99ff 80%);
+      background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+      margin: 0;
+      padding: 0;
+      text-align: center;
     }
 
-        
-        .class1{
-            display: inline-block;
-            border-radius: 14px;
-            background-color: #BF52E7;
-            border: none;
-            color: #FFFFFF;
-            text-align: center;
-            font-size: 40px;
+    img {
+      display: block;
+      margin: 30px auto 20px;
+      width: 90px;
+    }
+
+    button {
+      display: block;
+      width: 80%;
+      max-width: 500px;
+      margin: 15px auto;
+      padding: 20px;
+      font-size: 32px;
       font-family: 'Ubuntu', sans-serif;
-            padding: 1%;
-	    opacity: 0.7;
-            width: 90%;
-            transition: all 0.5s;
-            cursor: pointer;
-            margin: 5px;
-            margin-left: 4.5%;
-            margin-right: 4.5%;
+      color: #ffffff;
+      background-color: #6a11cb;
+      border: none;
+      border-radius: 14px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        }
-        .class2{
-            display: inline-block;
-            border-radius: 14px;
-      font-family: 'Ubuntu', sans-serif;
-            background-color: #80767D;
-            border: none;
-            color: #FFFFFF;
-            text-align: center;
-            font-size: 40px;
-            padding: 1%;
-            width: 90%;
-	    opacity: 0.7;
-            transition: all 0.5s;
-            cursor: pointer;
-            margin: 5px;
-            margin-left: 4.5%;
-            margin-right: 4.5%;
+    button:hover {
+      transform: scale(1.06);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25), 0 0 10px #ffffffaa;
+    }
 
-        }
-        .class3{
-            display: inline-block;
-            border-radius: 14px;
-            background-color: #4581DB;
-            border: none;
-            color: #FFFFFF;
-            text-align: center;
-            font-size: 40px;
-      font-family: 'Ubuntu', sans-serif;
-            padding: 1%;
-            width: 90%;
-	    opacity: 0.7;
-            transition: all 0.5s;
-            cursor: pointer;
-            margin: 5px;
-            margin-left: 4.5%;
-            margin-right: 4.5%;
+    .class1 { background-color: #BF52E7; }
+    .class2 { background-color: #80767D; }
+    .class3 { background-color: #4581DB; }
+    .class4 { background-color: #94E234; }
+    .class5 { background-color: #F27824; }
+    .class6 { background-color: #F84A54; }
 
-        }
-        .class4{
-            display: inline-block;
-            border-radius: 14px;
-            background-color: #94E234;
-            border: none;
-            color: #FFFFFF;
-      font-family: 'Ubuntu', sans-serif;
-            text-align: center;
-            font-size: 40px;
-            padding: 1%;
-            width: 90%;
-	    opacity: 0.7;
-            transition: all 0.5s;
-            cursor: pointer;
-            margin: 5px;
-            margin-left: 4.5%;
-            margin-right: 4.5%;
+    button span {
+      display: inline-block;
+      position: relative;
+      transition: 0.3s;
+    }
 
-        }
-        .class5{
-            display: inline-block;
-            border-radius: 14px;
-            background-color: #F27824;
-            border: none;
-            color: #FFFFFF;
-            text-align: center;
-            font-size: 40px;
-            padding: 1%;
-      font-family: 'Ubuntu', sans-serif;
-            width: 90%;
-	    opacity: 0.7;
-            transition: all 0.5s;
-            cursor: pointer;
-            margin: 5px;
-            margin-left: 4.5%;
-            margin-right: 4.5%;
+    button span::after {
+      content: ' ';
+      position: absolute;
+      right: -20px;
+      opacity: 0;
+      transition: 0.3s;
+    }
 
-        }
-        .class6{
-            display: inline-block;
-            border-radius: 14px;
-            background-color: #F84A54;
-            border: none;
-            color: #FFFFFF;
-            text-align: center;
-      font-family: 'Ubuntu', sans-serif;
-            font-size: 40px;
-            padding: 1%;
-            width: 90%;
-	    opacity: 0.7;
-            transition: all 0.5s;
-            cursor: pointer;
-            margin: 5px;
-            margin-left: 4.5%;
-            margin-right: 4.5%;
+    button:hover span {
+      padding-right: 40px;
+    }
 
-        }
-
-.class1 span {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            transition: 0.5s;
-        }
-
-        .class1 span:after {
-            content: '»';
-            position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
-        }
-
-        .class1:hover span {
-            padding-right: 25px;  
-
-	    color:#000000   }
-
-        .class1:hover span:after {
-            opacity: 1;
-            right: 0;
-        }
- .class2 span {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            transition: 0.5s;
-        }
-
-        .class2 span:after {
-            content: '»';
-            position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
-        }
-
-        .class2:hover span {
-            padding-right: 25px;  
-
-	    color:#000000   }
-
-        .class2:hover span:after {
-            opacity: 1;
-            right: 0;
-        }
- .class3 span {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            transition: 0.5s;
-        }
-
-        .class3 span:after {
-            content: '»';
-            position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
-        }
-
-        .class3:hover span {
-            padding-right: 25px;  
-
-	    color:#000000   }
-
-        .class3:hover span:after {
-            opacity: 1;
-            right: 0;
-        }
- .class4 span {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            transition: 0.5s;
-        }
-
-        .class4 span:after {
-            content: '»';
-            position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
-        }
-
-        .class4:hover span {
-            padding-right: 25px;
-
-	    color:#000000     }
-
-        .class4:hover span:after {
-            opacity: 1;
-            right: 0;
-        }
- .class5 span {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            transition: 0.5s;
-        }
-
-        .class5 span:after {
-            content: '»';
-            position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
-        }
-
-        .class5:hover span {
-            padding-right: 25px;
-
-	    color:#000000     }
-
-        .class5:hover span:after {
-            opacity: 1;
-            right: 0;
-        }
- .class6 span {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            transition: 0.5s;
-        }
-
-        .class6 span:after {
-            content: '»';
-            position: absolute;
-            opacity: 0;
-            top: 0;
-            right: -20px;
-            transition: 0.5s;
-        }
-
-        .class6:hover span {
-            padding-right: 25px;
-	    color:#000000     }
-
-        .class6:hover span:after {
-            opacity: 1;
-            right: 0;
-        }
-    </style>
+    button:hover span::after {
+      opacity: 1;
+      right: 0;
+    }
+  </style>
 </head>
 <body>
 
-   <div class="favicon">
-  <img src="favicon.png" width="120px", align="middle"> 
-   </div>
+  <img src="favicon.png" alt="Quiz Logo">
 
-    <button class="class1" onclick="class1Clicked()"><span>Endocrinology</span></button>
-    <button class="class2" onclick="class2Clicked()"><span>Reproductive </span></button>
-    <button class="class3" onclick="class3Clicked()"><span>Gastroenterology </span></button>
-    <button class="class4" onclick="class4Clicked()"><span>Urogenital</span></button>
-    <button class="class5" onclick="class5Clicked()"><span>Neurology </span></button>
-    <button class="class6" onclick="class6Clicked()"><span>Musculoskeletal </span></button>
+  <button class="class1" onclick="window.location.href='Quiz.html'"><span>Endocrinology</span></button>
+  <button class="class3" onclick="window.location.href='Quiz_EndoRepro.html'"><span>Gastroenterology</span></button>
+  <button class="class3" onclick="window.location.href='Quiz_GI.html'"><span>Gastroenterology</span></button>
+  <button class="class4" onclick="window.location.href='renal.html'"><span>Urogenital</span></button>
+  <button class="class5" onclick="window.location.href='Quiz_CNS.html'"><span>Neurology</span></button>
+  <button class="class6" onclick="window.location.href='Quiz_MSK.html'"><span>Musculoskeletal</span></button>
 
-    <script>
-        function class1Clicked() {
-            window.location.href='Quiz.html';
-        }
-        function class4Clicked() {
-            window.location.href='Renal.html';
-        }
-
-	function class2Clicked() {
-            alert('Locked!');
-        }
-	function class3Clicked() {
-            window.location.href='GI.html';
-        }
-	function class5Clicked() {
-            window.location.href='Neurology.html';
-        }
-	function class6Clicked() {
-             window.location.href='musculoskeletal.html';
-        }
-    </script>
 </body>
 </html>
