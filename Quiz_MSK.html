@@ -315,6 +315,15 @@ function restartQuiz() {
     }
   });
 </script>
+    <script>
+    // Check if user is logged in
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+    // If not logged in, redirect to login page
+    if (!isLoggedIn) {
+      window.location.href = "login.html";  // Redirect to the login page
+    }
+  </script>
 
 </body>
 </html>
