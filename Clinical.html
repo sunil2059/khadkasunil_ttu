@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Quiz Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Josefin Sans', sans-serif;
+      background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 5px;
+      font-size: 2.8rem;
+      color: #2c3e50;
+      text-shadow: 1px 1px 2px #ffffff;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      padding: 30px;
+      max-width: 1100px;
+      margin: 0 auto 50px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .card-title {
+      padding: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      font-family: 'Ubuntu', sans-serif;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      position: relative;
+    }
+
+    .popup h2 {
+      margin-bottom: 20px;
+      color: #00796b;
+    }
+
+    .popup .set-btn {
+      display: block;
+      margin: 10px auto;
+      background: #00796b;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 80%;
+    }
+
+    .popup .set-btn:hover {
+      background: #004d40;
+    }
+
+    .close-btn {
+      background: transparent;
+      color: #888;
+      font-size: 24px;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    img.logo {
+      width: 140px;
+      margin: 10px auto 10px;
+    }
+
+    .quiz-buttons button {
+      display: block;
+      width: 85%;
+      max-width: 600px;
+      margin: 15px auto;
+      padding: 15px;
+      font-size: 20px;
+      font-family: 'Ubuntu', sans-serif;
+      color: #ffffff;
+      border: none;
+      border-radius: 25px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .quiz-buttons button:hover {
+      transform: scale(1.06);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25), 0 0 10px #ffffffaa;
+    }
+
+    .class1 { background-color: #BF52E7; }
+    .class2 { background-color: #80767D; }
+    .class3 { background-color: #4581DB; }
+    .class4 { background-color: #94E234; }
+    .class5 { background-color: #F27824; }
+    .class6 { background-color: #F84A54; }
+
+    footer {
+      margin: 50px 0 20px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="https://khadkasunil.com.np/favicon.png" alt="Logo" class="logo">
+  <h1>Clinical Science</h1>
+
+  <div class="card-container">
+    <div class="card" onclick="showPopup('Medicine')">
+      <img src="Medicine.jpg">
+      <div class="card-title">Medicine</div>
+    </div>
+    <div class="card" onclick="showPopup('Surgery')">
+      <img src="Surgery.jpg">
+      <div class="card-title">Surgery</div>
+    </div>
+    <div class="card" onclick="showPopup('Paediatrics')">
+      <img src="Paediatrics.jpg">
+      <div class="card-title">Paediatrics</div>
+    </div>
+    <div class="card" onclick="showPopup('Obstetrics')">
+      <img src="obstetrics.png">
+      <div class="card-title">Obstetrics</div>
+    </div>
+    <div class="card" onclick="showPopup('Forensic Medicine')">
+      <img src="forensic.jpg">
+      <div class="card-title">Forensic Medicine</div>
+    </div>
+    <div class="card" onclick="showPopup('Community Medicine')">
+      <img src="community.jpg">
+      <div class="card-title">Community Medicine</div>
+    </div>
+  </div>
+
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <button class="close-btn" onclick="closePopup()">×</button>
+      <h2 id="popup-title">Topic</h2>
+      <button class="set-btn" id="set1">Set 1</button>
+      <button class="set-btn" id="set2">Set 2</button>
+      <button class="set-btn" id="set3">Set 3</button>
+    </div>
+  </div>
+
+
+  <footer>© 2025 Sunil Khadka</footer>
+
+  <script>
+    const urls = {
+      "Medicine": {
+        set1: "https://example.com/medicine/set1",
+        set2: "https://example.com/medicine/set2",
+        set3: "https://example.com/medicine/set3"
+      },
+      "Surgery": {
+        set1: "https://example.com/surgery/set1",
+        set2: "https://example.com/surgery/set2",
+        set3: "https://example.com/surgery/set3"
+      },
+      "Paediatrics": {
+        set1: "https://example.com/paediatrics/set1",
+        set2: "https://example.com/paediatrics/set2",
+        set3: "https://example.com/paediatrics/set3"
+      },
+      "Obstetrics": {
+        set1: "https://example.com/obstetrics/set1",
+        set2: "https://example.com/obstetrics/set2",
+        set3: "https://example.com/obstetrics/set3"
+      },
+      "Forensic Medicine": {
+        set1: "https://example.com/forensic/set1",
+        set2: "https://example.com/forensic/set2",
+        set3: "https://example.com/forensic/set3"
+      },
+      "Community Medicine": {
+        set1: "https://example.com/community/set1",
+        set2: "https://example.com/community/set2",
+        set3: "https://example.com/community/set3"
+      }
+    };
+
+    function showPopup(topic) {
+      document.getElementById('popup-title').innerText = topic;
+      document.getElementById('popup').style.display = 'flex';
+
+      document.getElementById('set1').onclick = () => window.location.href = urls[topic].set1;
+      document.getElementById('set2').onclick = () => window.location.href = urls[topic].set2;
+      document.getElementById('set3').onclick = () => window.location.href = urls[topic].set3;
+    }
+
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+
+    // Redirect to login if not logged in
+    if (!localStorage.getItem('isLoggedIn')) {
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>
