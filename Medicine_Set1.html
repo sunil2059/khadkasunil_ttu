@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz App</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #name-container, #quiz-content {
+      max-width: 700px;
+      width: 90%;
+      background: white;
+      margin-top: 40px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 25px;
+      text-align: center;
+    }
+
+    #quiz-content {
+      display: none;
+      font-family:palatino;
+    }
+
+    .option-btn {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #f0f0f0;
+      cursor: pointer;
+      transition: background 0.3s;
+      color: black;
+    }
+
+    .option-btn:hover {
+      background: #aaaaaa;
+    }
+
+    .selected-correct {
+      background-color: #d4edda;
+      border-color: #28a745;
+      color: #155724;
+    }
+
+    .selected-wrong {
+      background-color: #f8d7da;
+      border-color: #dc3545;
+      color: #721c24;
+    }
+
+    #timer {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #cc0033;
+      font-weight: bold;
+    }
+
+    img.logo {
+      height: 110px;
+      margin-bottom: 2px;
+    }
+
+    input#username {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+      font-family:cursive;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: border-color 0.3s ease;
+    }
+
+    input#username:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #336699;
+    }
+  </style>
+</head>
+<body>
+  <body oncontextmenu="return false;">
+
+
+<div id="name-container">
+  <img class="logo" src="https://khadkasunil.com.np/images/Logo_khadkasunil.png" alt="Brand Logo">
+  <h2 style="font-family:palatino;">Welcome to the Quiz!</h2>
+  <div style="text-align: left; margin-bottom: 20px; padding: 5px; font-family: lucida; font-size:15px; border: 3px solid #ddd; border-radius: 25px; background-color: #f9f9f9;">
+    <h3 style="padding-left: 35px;"> ⚠ Instructions:</h3>
+    <ul style="line-height: 1.2; padding-left: 50px;">
+      <li>Enter your name before starting the quiz.</li>
+      <li>You will have 30 seconds to answer each question.</li>
+      <li>There will be 30 Questions.</li>
+      <li>Each question has only one correct answer.</li>
+      <li>You cannot change your answer once selected.</li>
+      <li>Explanation will be shown after answering or time out.</li>
+      <li>Your final score will be shown at the end of the quiz.</li>
+      <li>Click "Restart Quiz" to try again anytime.</li>
+    </ul>
+  </div>
+
+
+  <input type="text" id="username" placeholder="Enter your name" />
+  <br><br>
+  <button onclick="startQuiz()">Start Quiz</button>
+</div>
+
+<div id="quiz-content">
+  <img class="logo" src="https://khadkasunil.com.np/images/Logo_khadkasunil.png" alt="Brand Logo">  
+  <div id="question-number" style="font-weight: bold; color: #000080; margin-bottom: 10px;"></div>
+  <div id="timer"></div>
+  <div id="question"></div>
+  <div id="options"></div>
+  <div id="feedback"></div>
+  <div id="explanation"></div>
+  <br>
+  <button id="next-btn" onclick="nextQuestion()">Next Question</button>
+  <div id="score" style="display:none;"></div>
+  <button id="restart-btn" style="display:none;" onclick="restartQuiz()">Restart Quiz</button>
+</div>
+
+<script>
+let username = '';
+let quizData = [];
+let currentQuestionIndex = 0;
+let timer;
+let timeLeft = 30;
+let score = 0;
+
+function fetchQuestionsFromSheet() {
+  const sheetID = '1kNWWESJpEnqo5WHNgp7j9zWTviow030roEKg_jq5ONA';
+  const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`;
+
+  fetch(url)
+    .then(res => res.text())
+    .then(data => {
+      const json = JSON.parse(data.substring(47, data.length - 2));
+      quizData = json.table.rows.map(row => ({
+        question: row.c[0]?.v || '',
+        options: [row.c[1]?.v, row.c[2]?.v, row.c[3]?.v, row.c[4]?.v],
+        correct: row.c[5]?.v || '',
+        explanation: row.c[6]?.v || ''
+      }));
+      displayQuestion();
+    })
+    .catch(error => {
+      alert("❌ Failed to load the questions. Please try again.");
+    });
+}
+
+function startQuiz() {
+  username = document.getElementById('username').value.trim();
+  if (!username) {
+    alert("Please enter your name to start the quiz.");
+    return;
+  }
+
+  document.getElementById('name-container').style.display = 'none';
+  document.getElementById('quiz-content').style.display = 'block';
+  fetchQuestionsFromSheet();
+}
+
+function startTimer() {
+  timeLeft = 30;
+  updateTimerDisplay();
+  clearInterval(timer);
+  timer = setInterval(() => {
+    timeLeft--;
+    updateTimerDisplay();
+    if (timeLeft === 0) {
+      clearInterval(timer);
+      showFeedback(`⏳ Time's up! The correct answer was: ${quizData[currentQuestionIndex].correct}`);
+      showExplanation(quizData[currentQuestionIndex].explanation);
+      disableOptions();
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  document.getElementById("timer").innerText = `Time Left: ${timeLeft}s`;
+}
+
+function displayQuestion() {
+  if (currentQuestionIndex >= quizData.length) {
+    endQuiz();
+    return;
+  }
+  startTimer();
+  const q = quizData[currentQuestionIndex];
+  document.getElementById("question-number").innerText = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+  document.getElementById("question").innerHTML = `<h3>${q.question}</h3>`;
+  document.getElementById("options").innerHTML = q.options.map(opt => `<button class="option-btn" data-answer="${opt}">${opt}</button>`).join('');
+  document.getElementById("feedback").innerHTML = "";
+  document.getElementById("explanation").innerHTML = "";
+  document.querySelectorAll(".option-btn").forEach(button => {
+    button.addEventListener("click", function () {
+      checkAnswer(button, button.dataset.answer, q.correct);
+    });
+  });
+}
+
+function checkAnswer(button, selected, correct) {
+  clearInterval(timer);
+  document.querySelectorAll(".option-btn").forEach(option => {
+    if (option.innerText === correct) option.classList.add("selected-correct");
+    else option.classList.add("selected-wrong");
+  });
+  if (selected === correct) {
+    score++;
+    showFeedback("✅ Correct!");
+  } else {
+    showFeedback(`❌ Wrong! The correct answer was: ${correct}`);
+  }
+  showExplanation(quizData[currentQuestionIndex].explanation);
+  disableOptions();
+}
+
+function showFeedback(msg) {
+  document.getElementById("feedback").innerText = msg;
+}
+
+function showExplanation(exp) {
+  document.getElementById("explanation").innerText = `Explanation: ${exp}`;
+}
+
+function disableOptions() {
+  document.querySelectorAll(".option-btn").forEach(option => option.disabled = true);
+}
+
+function nextQuestion() {
+  currentQuestionIndex++;
+  displayQuestion();
+}
+
+function endQuiz() {
+  document.getElementById("question").innerHTML = "<h3>Quiz Completed!</h3>";
+  document.getElementById("options").innerHTML = "";
+  document.getElementById("next-btn").style.display = "none";
+  document.getElementById("timer").style.display = "none";
+  document.getElementById("score").style.display = "block";
+  document.getElementById("score").innerHTML = `<h3>Total Score: ${score} / ${quizData.length}</h3>`;
+  sendScoreToGoogleSheets(username, score);
+  document.getElementById("restart-btn").style.display = "block";
+}
+
+function sendScoreToGoogleSheets(username, score) {
+  const url = 'https://script.google.com/macros/s/AKfycbwz2jtT1sv6H-pFwBo_kcq_4TUAd2HipLhlXSFvkk2BLW-RC28EdPrY9WKVhHkorb_F/exec';
+  const params = new URLSearchParams();
+  params.append('name', username);
+  params.append('score', score);
+
+  fetch(url, {
+    method: 'POST',
+    body: params
+  }).then(res => res.text())
+    .then(msg => console.log(msg))
+    .catch(err => console.error('Error:', err));
+}
+
+function restartQuiz() {
+  currentQuestionIndex = 0;
+  score = 0;
+  timeLeft = 15;
+  document.getElementById("score").style.display = "none";
+  document.getElementById("restart-btn").style.display = "none";
+  document.getElementById("timer").style.display = "block";
+  document.getElementById("next-btn").style.display = "block";
+  displayQuestion();
+}
+</script>
+  <script>
+  document.addEventListener('keydown', function (e) {
+    // F12
+    if (e.key === "F12") {
+      e.preventDefault();
+    }
+    // Ctrl+Shift+I
+    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+      e.preventDefault();
+    }
+    // Ctrl+U
+    if (e.ctrlKey && e.key === 'u') {
+      e.preventDefault();
+    }
+    // Ctrl+Shift+J
+    if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+      e.preventDefault();
+    }
+  });
+</script>
+    <script>
+    // Check if user is logged in
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+    // If not logged in, redirect to login page
+    if (!isLoggedIn) {
+      window.location.href = "login.html";  // Redirect to the login page
+    }
+  </script>
+
+</body>
+</html>
