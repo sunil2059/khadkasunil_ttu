@@ -129,7 +129,7 @@
       <h2>🧬 Basic Science</h2>
     </div>
     <div class="main-card" onclick="showPopup('clinical')">
-      <img src="Clinical.jpg" alt="Clinical Science" class="thumb" />
+      <img src="clinical.jpg" alt="Clinical Science" class="thumb" />
       <h2>🩺 Clinical Science</h2>
     </div>
   </div>
@@ -146,7 +146,7 @@
   <script>
     function showPopup(type) {
       const iframe = document.getElementById('popup-iframe');
-      iframe.src = type === 'clinical' ? 'clinical.html' : 'https://khadkasunil.com.np/choices.html';
+      iframe.src = type === 'clinical' ? 'Clinical.html' : 'https://khadkasunil.com.np/choices.html';
       document.getElementById('popup').style.display = 'flex';
     }
 
