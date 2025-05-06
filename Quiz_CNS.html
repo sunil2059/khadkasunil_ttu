@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Quiz App</title>
+  <title>Live Quiz Contest</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -28,7 +28,7 @@
 
     #quiz-content {
       display: none;
-      font-family:palatino;
+      font-family: palatino;
     }
 
     .option-btn {
@@ -49,13 +49,19 @@
       background: #aaaaaa;
     }
 
-    .selected-correct {
+    .selected {
+      background-color: #d1ecf1;
+      border-color: #17a2b8;
+      color: #0c5460;
+    }
+
+    .correct-answer {
       background-color: #d4edda;
       border-color: #28a745;
       color: #155724;
     }
 
-    .selected-wrong {
+    .wrong-answer {
       background-color: #f8d7da;
       border-color: #dc3545;
       color: #721c24;
@@ -73,18 +79,17 @@
       margin-bottom: 2px;
     }
 
-    input#username {
+    input {
       width: 80%;
       padding: 10px;
       font-size: 16px;
-      font-family:cursive;
+      font-family: cursive;
       border: 1px solid #ccc;
       border-radius: 6px;
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-      transition: border-color 0.3s ease;
+      margin: 5px 0;
     }
 
-    input#username:focus {
+    input:focus {
       border-color: #007bff;
       outline: none;
     }
@@ -103,56 +108,53 @@
     button:hover {
       background-color: #336699;
     }
+
+    .review-question {
+      border-top: 1px solid #ccc;
+      margin-top: 15px;
+      padding-top: 10px;
+      text-align: left;
+    }
   </style>
 </head>
-<body>
-  <body oncontextmenu="return false;">
-
+<body oncontextmenu="return false;">
 
 <div id="name-container">
   <img class="logo" src="https://khadkasunil.com.np/images/Logo_khadkasunil.png" alt="Brand Logo">
-  <h2 style="font-family:palatino;">Welcome to the Quiz!</h2>
+  <h2 id="quiz-heading" style="font-family:palatino;">CNS Live Quiz</h2>
   <div style="text-align: left; margin-bottom: 20px; padding: 5px; font-family: cursive; font-size:15px; border: 3px solid #ddd; border-radius: 25px; background-color: #f9f9f9;">
     <h3 style="padding-left: 35px;"> ⚠ Instructions:</h3>
     <ul style="line-height: 1.2; padding-left: 50px;">
-      <li>Enter your name before starting the quiz.</li>
-      <li>You will have 30 seconds to answer each question.</li>
-      <li>There will be 10 Questions.</li>
-      <li>Each question has only one correct answer.</li>
-      <li>You cannot change your answer once selected.</li>
-      <li>Explanation will be shown after answering or time out.</li>
-      <li>Your final score will be shown at the end of the quiz.</li>
-      <li>Click "Restart Quiz" to try again anytime.</li>
+      <li>Enter your name and valid quiz coupon code.</li>
+      <li>You will have a total time to complete all questions.</li>
+      <li>You can change your answer before time runs out.</li>
+      <li>Feedback and explanations will be shown only at the end.</li>
     </ul>
   </div>
-
-
   <input type="text" id="username" placeholder="Enter your name" />
+  <input type="text" id="coupon" placeholder="Enter quiz coupon code" />
   <br><br>
   <button onclick="startQuiz()">Start Quiz</button>
 </div>
 
 <div id="quiz-content">
   <img class="logo" src="https://khadkasunil.com.np/images/Logo_khadkasunil.png" alt="Brand Logo">  
-  <div id="question-number" style="font-weight: bold; color: #000080; margin-bottom: 10px;"></div>
   <div id="timer"></div>
-  <div id="question"></div>
-  <div id="options"></div>
-  <div id="feedback"></div>
-  <div id="explanation"></div>
+  <div id="questions-container"></div>
   <br>
-  <button id="next-btn" onclick="nextQuestion()">Next Question</button>
-  <div id="score" style="display:none;"></div>
-  <button id="restart-btn" style="display:none;" onclick="restartQuiz()">Restart Quiz</button>
+  <button id="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+  <div id="result" style="display:none;"></div>
 </div>
 
 <script>
 let username = '';
+let coupon = '';
+let quizHeading = '';
 let quizData = [];
-let currentQuestionIndex = 0;
+let selectedAnswers = {};
+let totalTime = 300;
 let timer;
-let timeLeft = 30;
-let score = 0;
+let correctCouponCode = '';
 
 function fetchQuestionsFromSheet() {
   const sheetID = '1rSCrb3ojuJKhaWf6dLEhjDEuwFOvA5Uptuem_-IpyAU';
@@ -161,120 +163,117 @@ function fetchQuestionsFromSheet() {
   fetch(url)
     .then(res => res.text())
     .then(data => {
-      const json = JSON.parse(data.substring(47, data.length - 2));
-      quizData = json.table.rows.map(row => ({
+      const json = JSON.parse(data.substring(47).slice(0, -2));
+      const rows = json.table.rows;
+      correctCouponCode = rows[0].c[9]?.v.trim(); // J1 cell
+      quizData = rows.slice(1).map(row => ({
         question: row.c[0]?.v || '',
         options: [row.c[1]?.v, row.c[2]?.v, row.c[3]?.v, row.c[4]?.v],
         correct: row.c[5]?.v || '',
         explanation: row.c[6]?.v || ''
       }));
-      displayQuestion();
+      displayAllQuestions();
+      startGlobalTimer();
     })
-    .catch(error => {
-      alert("❌ Failed to load the questions. Please try again.");
-    });
+    .catch(() => alert("❌ Failed to load the questions."));
 }
 
 function startQuiz() {
   username = document.getElementById('username').value.trim();
-  if (!username) {
-    alert("Please enter your name to start the quiz.");
+  coupon = document.getElementById('coupon').value.trim();
+  quizHeading = document.getElementById('quiz-heading').innerText.trim();
+
+  if (!username || !coupon) {
+    alert("Please enter both name and coupon code.");
     return;
   }
 
+  fetchQuestionsFromSheet();
   document.getElementById('name-container').style.display = 'none';
   document.getElementById('quiz-content').style.display = 'block';
-  fetchQuestionsFromSheet();
 }
 
-function startTimer() {
-  timeLeft = 30;
+function displayAllQuestions() {
+  if (coupon !== correctCouponCode) {
+    alert("Invalid Coupon Code!");
+    location.reload();
+    return;
+  }
+
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+  quizData.forEach((q, index) => {
+    const questionBlock = document.createElement('div');
+    questionBlock.innerHTML = `<div class="review-question">
+      <h4>Q${index + 1}. ${q.question}</h4>
+      ${q.options.map(option => `
+        <button class="option-btn" onclick="selectAnswer(${index}, this)" data-answer="${option}">${option}</button>
+      `).join('')}
+    </div>`;
+    container.appendChild(questionBlock);
+  });
+}
+
+function selectAnswer(qIndex, button) {
+  selectedAnswers[qIndex] = button.dataset.answer;
+  const buttons = button.parentElement.querySelectorAll('.option-btn');
+  buttons.forEach(btn => btn.classList.remove('selected'));
+  button.classList.add('selected');
+}
+
+function startGlobalTimer() {
   updateTimerDisplay();
-  clearInterval(timer);
   timer = setInterval(() => {
-    timeLeft--;
+    totalTime--;
     updateTimerDisplay();
-    if (timeLeft === 0) {
+    if (totalTime === 0) {
       clearInterval(timer);
-      showFeedback(`⏳ Time's up! The correct answer was: ${quizData[currentQuestionIndex].correct}`);
-      showExplanation(quizData[currentQuestionIndex].explanation);
-      disableOptions();
+      submitQuiz();
     }
   }, 1000);
 }
 
 function updateTimerDisplay() {
-  document.getElementById("timer").innerText = `Time Left: ${timeLeft}s`;
+  document.getElementById("timer").innerText = `⏳ Time Left: ${Math.floor(totalTime / 60)}m ${totalTime % 60}s`;
 }
 
-function displayQuestion() {
-  if (currentQuestionIndex >= quizData.length) {
-    endQuiz();
-    return;
-  }
-  startTimer();
-  const q = quizData[currentQuestionIndex];
-  document.getElementById("question-number").innerText = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
-  document.getElementById("question").innerHTML = `<h3>${q.question}</h3>`;
-  document.getElementById("options").innerHTML = q.options.map(opt => `<button class="option-btn" data-answer="${opt}">${opt}</button>`).join('');
-  document.getElementById("feedback").innerHTML = "";
-  document.getElementById("explanation").innerHTML = "";
-  document.querySelectorAll(".option-btn").forEach(button => {
-    button.addEventListener("click", function () {
-      checkAnswer(button, button.dataset.answer, q.correct);
-    });
-  });
-}
-
-function checkAnswer(button, selected, correct) {
+function submitQuiz() {
   clearInterval(timer);
-  document.querySelectorAll(".option-btn").forEach(option => {
-    if (option.innerText === correct) option.classList.add("selected-correct");
-    else option.classList.add("selected-wrong");
+  let score = 0;
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+
+  quizData.forEach((q, index) => {
+    const userAnswer = selectedAnswers[index] || 'Not Answered';
+    const isCorrect = userAnswer === q.correct;
+    if (isCorrect) score++;
+
+    const block = document.createElement('div');
+    block.className = 'review-question';
+    block.innerHTML = `
+      <h4>Q${index + 1}. ${q.question}</h4>
+      <p>Your answer: <b class="${isCorrect ? 'correct-answer' : 'wrong-answer'}">${userAnswer}</b></p>
+      <p>Correct answer: <b>${q.correct}</b></p>
+      <p><i>Explanation: ${q.explanation}</i></p>
+    `;
+    container.appendChild(block);
   });
-  if (selected === correct) {
-    score++;
-    showFeedback("✅ Correct!");
-  } else {
-    showFeedback(`❌ Wrong! The correct answer was: ${correct}`);
-  }
-  showExplanation(quizData[currentQuestionIndex].explanation);
-  disableOptions();
+
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').innerHTML = `<h3>Total Score: ${score} / ${quizData.length}</h3>`;
+
+  document.getElementById('submit-btn').innerText = 'Restart Quiz';
+  document.getElementById('submit-btn').onclick = () => location.reload();
+
+  sendScoreToGoogleSheets(username, score, quizHeading);
 }
 
-function showFeedback(msg) {
-  document.getElementById("feedback").innerText = msg;
-}
-
-function showExplanation(exp) {
-  document.getElementById("explanation").innerText = `Explanation: ${exp}`;
-}
-
-function disableOptions() {
-  document.querySelectorAll(".option-btn").forEach(option => option.disabled = true);
-}
-
-function nextQuestion() {
-  currentQuestionIndex++;
-  displayQuestion();
-}
-
-function endQuiz() {
-  document.getElementById("question").innerHTML = "<h3>Quiz Completed!</h3>";
-  document.getElementById("options").innerHTML = "";
-  document.getElementById("next-btn").style.display = "none";
-  document.getElementById("timer").style.display = "none";
-  document.getElementById("score").style.display = "block";
-  document.getElementById("score").innerHTML = `<h3>Total Score: ${score} / ${quizData.length}</h3>`;
-  sendScoreToGoogleSheets(username, score);
-  document.getElementById("restart-btn").style.display = "block";
-}
-
-function sendScoreToGoogleSheets(username, score) {
-  const url = 'https://script.google.com/macros/s/AKfycbwz2jtT1sv6H-pFwBo_kcq_4TUAd2HipLhlXSFvkk2BLW-RC28EdPrY9WKVhHkorb_F/exec';
+function sendScoreToGoogleSheets(username, score, quizHeading) {
+  const url = 'https://script.google.com/macros/s/AKfycbzt361ObiZvrmakITdMG6Hcf12O5aq7RjFJeySkJk4zMOcBvdBkKBMiAguY3Rhud7eT/exec'; // Replace with your actual Apps Script URL
   const params = new URLSearchParams();
   params.append('name', username);
   params.append('score', score);
+  params.append('quiz', quizHeading);
 
   fetch(url, {
     method: 'POST',
@@ -284,36 +283,11 @@ function sendScoreToGoogleSheets(username, score) {
     .catch(err => console.error('Error:', err));
 }
 
-function restartQuiz() {
-  currentQuestionIndex = 0;
-  score = 0;
-  timeLeft = 15;
-  document.getElementById("score").style.display = "none";
-  document.getElementById("restart-btn").style.display = "none";
-  document.getElementById("timer").style.display = "block";
-  document.getElementById("next-btn").style.display = "block";
-  displayQuestion();
-}
-</script>
-  <script>
-  document.addEventListener('keydown', function (e) {
-    // F12
-    if (e.key === "F12") {
-      e.preventDefault();
-    }
-    // Ctrl+Shift+I
-    if (e.ctrlKey && e.shiftKey && e.key === 'I') {
-      e.preventDefault();
-    }
-    // Ctrl+U
-    if (e.ctrlKey && e.key === 'u') {
-      e.preventDefault();
-    }
-    // Ctrl+Shift+J
-    if (e.ctrlKey && e.shiftKey && e.key === 'J') {
-      e.preventDefault();
-    }
-  });
+document.addEventListener('keydown', function (e) {
+  if (["F12", "I", "U", "J"].includes(e.key) && (e.ctrlKey || e.metaKey)) {
+    e.preventDefault();
+  }
+});
 </script>
 
 </body>
