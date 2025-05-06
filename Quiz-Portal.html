@@ -158,8 +158,10 @@
       document.getElementById('popup').style.display = 'none';
       document.getElementById('popup-iframe').src = '';
     }
+        if (!localStorage.getItem('isLoggedIn')) {
+      window.location.href = "login.html";
+    }
   </script>
-    <footer>© 2025 Sunil Khadka</footer>
-
+    
 </body>
 </html>
