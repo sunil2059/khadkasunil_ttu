@@ -126,7 +126,7 @@
     <h3 style="padding-left: 35px;"> ⚠ Instructions:</h3>
     <ul style="line-height: 1.2; padding-left: 50px;">
       <li>Enter your name and valid quiz coupon code.</li>
-      <li>You will have a total time to complete all questions.</li>
+      <li>You will have a total time 5 minutes to complete 10 questions.</li>
       <li>You can change your answer before time runs out.</li>
       <li>Feedback and explanations will be shown only at the end.</li>
     </ul>
@@ -269,7 +269,7 @@ function submitQuiz() {
 }
 
 function sendScoreToGoogleSheets(username, score, quizHeading) {
-  const url = 'https://script.google.com/macros/s/AKfycbzt361ObiZvrmakITdMG6Hcf12O5aq7RjFJeySkJk4zMOcBvdBkKBMiAguY3Rhud7eT/exec'; // Replace with your actual Apps Script URL
+  const url = 'https://script.google.com/macros/s/AKfycbzztYdEbPUlKxulM_h4I-OgGYktfZASuk-kvVYO44pr3fN44JUc0KL-2Q7C6Cie25fS/exec'; // Replace with your actual Apps Script URL
   const params = new URLSearchParams();
   params.append('name', username);
   params.append('score', score);
