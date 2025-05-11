@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Live Quiz Contest</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #name-container, #quiz-content {
+      max-width: 700px;
+      width: 90%;
+      background: white;
+      margin-top: 40px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 25px;
+      text-align: center;
+    }
+
+    #quiz-content {
+      display: none;
+      font-family: palatino;
+    }
+
+    .option-btn {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #f0f0f0;
+      cursor: pointer;
+      transition: background 0.3s;
+      color: black;
+    }
+
+    .option-btn:hover {
+      background: #aaaaaa;
+    }
+
+    .selected {
+      background-color: #d1ecf1;
+      border-color: #17a2b8;
+      color: #0c5460;
+    }
+
+    .correct-answer {
+      background-color: #d4edda;
+      border-color: #28a745;
+      color: #155724;
+    }
+
+    .wrong-answer {
+      background-color: #f8d7da;
+      border-color: #dc3545;
+      color: #721c24;
+    }
+
+    #timer {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #cc0033;
+      font-weight: bold;
+    }
+
+    img.logo {
+      height: 110px;
+      margin-bottom: 2px;
+    }
+
+    input {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+      font-family: cursive;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin: 5px 0;
+    }
+
+    input:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #336699;
+    }
+
+    .review-question {
+      border-top: 1px solid #ccc;
+      margin-top: 15px;
+      padding-top: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body oncontextmenu="return false;">
+
+<div id="name-container">
+  <img class="logo" src="https://khadkasunil.com.np/images/Logo_khadkasunil.png" alt="Brand Logo">
+  <h2 id="quiz-heading" style="font-family:palatino;">Surgery Live Quiz</h2>
+  <div style="text-align: left; margin-bottom: 20px; padding: 5px; font-family: verdana; font-size:15px; border: 3px solid #ddd; border-radius: 25px; background-color: #f9f9f9;">
+    <h3 style="padding-left: 35px;"> ⚠ Instructions:</h3>
+    <ul style="line-height: 1.2; padding-left: 50px;">
+      <li>Enter your name and valid quiz coupon code.</li>
+      <li>You will have a total 15 minutes to solve 40 questions.</li>
+      <li>You can change your answer before time runs out.</li>
+      <li>Feedback and explanations will be shown only at the end.</li>
+    </ul>
+  </div>
+  <input type="text" id="username" placeholder="Enter your name" />
+  <input type="text" id="coupon" placeholder="Enter quiz coupon code" />
+  <br><br>
+  <button onclick="startQuiz()">Start Quiz</button>
+</div>
+
+<div id="quiz-content">
+  <img class="logo" src="https://khadkasunil.com.np/images/Logo_khadkasunil.png" alt="Brand Logo">  
+  <div id="timer"></div>
+  <div id="questions-container"></div>
+  <br>
+  <button id="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+  <div id="result" style="display:none;"></div>
+</div>
+
+<script>
+let username = '';
+let coupon = '';
+let quizHeading = '';
+let quizData = [];
+let selectedAnswers = {};
+let totalTime = 300;
+let timer;
+let correctCouponCode = '';
+
+function fetchQuestionsFromSheet() {
+  const sheetID = '1a0DJhM22f-XkQkHSsWjEmOoaJDyBePWd-uZ-uG7pEnw';
+  const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`;
+
+  fetch(url)
+    .then(res => res.text())
+    .then(data => {
+      const json = JSON.parse(data.substring(47).slice(0, -2));
+      const rows = json.table.rows;
+      correctCouponCode = rows[0].c[9]?.v.trim(); // J1 cell
+      quizData = rows.slice(1).map(row => ({
+        question: row.c[0]?.v || '',
+        options: [row.c[1]?.v, row.c[2]?.v, row.c[3]?.v, row.c[4]?.v],
+        correct: row.c[5]?.v || '',
+        explanation: row.c[6]?.v || ''
+      }));
+      displayAllQuestions();
+      startGlobalTimer();
+    })
+    .catch(() => alert("❌ Failed to load the questions."));
+}
+
+function startQuiz() {
+  username = document.getElementById('username').value.trim();
+  coupon = document.getElementById('coupon').value.trim();
+  quizHeading = document.getElementById('quiz-heading').innerText.trim();
+
+  if (!username || !coupon) {
+    alert("Please enter both name and coupon code.");
+    return;
+  }
+
+  fetchQuestionsFromSheet();
+  document.getElementById('name-container').style.display = 'none';
+  document.getElementById('quiz-content').style.display = 'block';
+}
+
+function displayAllQuestions() {
+  if (coupon !== correctCouponCode) {
+    alert("Invalid Coupon Code!");
+    location.reload();
+    return;
+  }
+
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+  quizData.forEach((q, index) => {
+    const questionBlock = document.createElement('div');
+    questionBlock.innerHTML = `<div class="review-question">
+      <h4>Q${index + 1}. ${q.question}</h4>
+      ${q.options.map(option => `
+        <button class="option-btn" onclick="selectAnswer(${index}, this)" data-answer="${option}">${option}</button>
+      `).join('')}
+    </div>`;
+    container.appendChild(questionBlock);
+  });
+}
+
+function selectAnswer(qIndex, button) {
+  selectedAnswers[qIndex] = button.dataset.answer;
+  const buttons = button.parentElement.querySelectorAll('.option-btn');
+  buttons.forEach(btn => btn.classList.remove('selected'));
+  button.classList.add('selected');
+}
+
+function startGlobalTimer() {
+  updateTimerDisplay();
+  timer = setInterval(() => {
+    totalTime--;
+    updateTimerDisplay();
+    if (totalTime === 0) {
+      clearInterval(timer);
+      submitQuiz();
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  document.getElementById("timer").innerText = `⏳ Time Left: ${Math.floor(totalTime / 60)}m ${totalTime % 60}s`;
+}
+
+function submitQuiz() {
+  clearInterval(timer);
+  let score = 0;
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+
+  quizData.forEach((q, index) => {
+    const userAnswer = selectedAnswers[index] || 'Not Answered';
+    const isCorrect = userAnswer === q.correct;
+    if (isCorrect) score++;
+
+    const block = document.createElement('div');
+    block.className = 'review-question';
+    block.innerHTML = `
+      <h4>Q${index + 1}. ${q.question}</h4>
+      <p>Your answer: <b class="${isCorrect ? 'correct-answer' : 'wrong-answer'}">${userAnswer}</b></p>
+      <p>Correct answer: <b>${q.correct}</b></p>
+      <p><i>Explanation: ${q.explanation}</i></p>
+    `;
+    container.appendChild(block);
+  });
+
+  document.getElementById('result').style.display = 'block';
+  document.getElementById('result').innerHTML = `<h3>Total Score: ${score} / ${quizData.length}</h3>`;
+
+  document.getElementById('submit-btn').innerText = 'Restart Quiz';
+  document.getElementById('submit-btn').onclick = () => location.reload();
+
+  sendScoreToGoogleSheets(username, score, quizHeading);
+}
+
+function sendScoreToGoogleSheets(username, score, quizHeading) {
+  const url = 'https://script.google.com/macros/s/AKfycbzztYdEbPUlKxulM_h4I-OgGYktfZASuk-kvVYO44pr3fN44JUc0KL-2Q7C6Cie25fS/exec'; // Replace with your actual Apps Script URL
+  const params = new URLSearchParams();
+  params.append('name', username);
+  params.append('score', score);
+  params.append('quiz', quizHeading);
+
+  fetch(url, {
+    method: 'POST',
+    body: params
+  }).then(res => res.text())
+    .then(msg => console.log(msg))
+    .catch(err => console.error('Error:', err));
+}
+
+document.addEventListener('keydown', function (e) {
+  if (["F12", "I", "U", "J"].includes(e.key) && (e.ctrlKey || e.metaKey)) {
+    e.preventDefault();
+  }
+});
+</script>
+
+</body>
+</html>
